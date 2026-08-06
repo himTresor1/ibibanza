@@ -24,18 +24,21 @@ export function BuyerInterestForm({ plotId }: { plotId: string }) {
   }
 
   return (
-    <Card>
+    <Card id="visit-request" className="scroll-mt-6 p-4 sm:p-5">
       <form action={onSubmit} className="space-y-4">
-        <h2 className="text-xl font-semibold">Saba gusura iki kibanza</h2>
+        <div>
+          <p className="text-sm font-semibold text-[var(--primary-base)]">Intambwe ikurikira</p>
+          <h2 className="mt-1 text-xl font-semibold text-[var(--text-strong-950)]">Saba gusura iki kibanza</h2>
+        </div>
         <FormField id="buyerName" label="Amazina yawe"><Input name="buyerName" placeholder="Amazina" required /></FormField>
         <FormField id="buyerPhone" label="Telefone yawe"><Input name="buyerPhone" placeholder="+250788123456" required /></FormField>
         <FormField id="preferredVisitTime" label="Igihe wifuza gusura"><Input name="preferredVisitTime" placeholder="Urugero: Ku wa Gatandatu" /></FormField>
         <FormField id="note" label="Icyo ushaka kubaza"><Textarea name="note" placeholder="Andika ikibazo cyangwa budget yawe." /></FormField>
         <div className="grid gap-2 sm:grid-cols-2">
-          <Button type="submit" className="w-full">Ohereza ubusabe</Button>
-          <a href={`tel:${platformPhone}`}><Button variant="neutral" mode="stroke" className="w-full">Hamagara ubu</Button></a>
+          <Button type="submit" className="min-h-11 w-full">Ohereza ubusabe</Button>
+          <Button asChild variant="neutral" mode="stroke" className="min-h-11 w-full"><a href={`tel:${platformPhone}`}>Hamagara ubu</a></Button>
         </div>
-        {status ? <p className="text-sm text-[var(--muted-foreground)]">{status}</p> : null}
+        {status ? <p role="status" className="text-sm text-[var(--muted-foreground)]">{status}</p> : null}
       </form>
     </Card>
   );
