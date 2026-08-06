@@ -14,6 +14,7 @@
     "@hookform/resolvers": "^5.7.1",
     "@ibibanza/shared": "file:../../packages/shared",
     "@ibibanza/ui": "file:../../packages/ui",
+    "@remixicon/react": "^4.9.0",
     "@tailwindcss/postcss": "^4.0.0",
     "lucide-react": "^1.29.0",
     "next": "16.2.6",

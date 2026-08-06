@@ -33,7 +33,7 @@ export function BuyerInterestForm({ plotId }: { plotId: string }) {
         <FormField id="note" label="Icyo ushaka kubaza"><Textarea name="note" placeholder="Andika ikibazo cyangwa budget yawe." /></FormField>
         <div className="grid gap-2 sm:grid-cols-2">
           <Button type="submit" className="w-full">Ohereza ubusabe</Button>
-          <a href={`tel:${platformPhone}`}><Button variant="secondary" className="w-full">Hamagara ubu</Button></a>
+          <a href={`tel:${platformPhone}`}><Button variant="neutral" mode="stroke" className="w-full">Hamagara ubu</Button></a>
         </div>
         {status ? <p className="text-sm text-[var(--muted-foreground)]">{status}</p> : null}
       </form>

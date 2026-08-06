@@ -1,29 +1,63 @@
-import type { ButtonHTMLAttributes } from "react";
+import { Slot } from "@radix-ui/react-slot";
+import type { ButtonHTMLAttributes, ElementType, SVGProps } from "react";
+import { tv, type VariantProps } from "tailwind-variants";
 import { cn } from "../lib/cn";
 
-type ButtonVariant = "primary" | "secondary" | "ghost" | "danger";
+export const buttonVariants = tv({
+  base: [
+    "group relative inline-flex items-center justify-center whitespace-nowrap outline-none",
+    "transition duration-200 ease-out disabled:pointer-events-none disabled:bg-[var(--bg-weak-50)] disabled:text-[var(--text-disabled-300)]",
+  ],
+  variants: {
+    variant: {
+      primary: "",
+      neutral: "",
+      error: "",
+    },
+    mode: {
+      filled: "",
+      stroke: "ring-1 ring-inset",
+      lighter: "ring-1 ring-inset",
+      ghost: "ring-1 ring-inset",
+    },
+    size: {
+      medium: "h-10 gap-3 rounded-[10px] px-3.5 text-sm font-semibold",
+      small: "h-9 gap-3 rounded-lg px-3 text-sm font-semibold",
+      xsmall: "h-8 gap-2.5 rounded-lg px-2.5 text-sm font-semibold",
+    },
+  },
+  compoundVariants: [
+    { variant: "primary", mode: "filled", class: "bg-[var(--primary-base)] text-white hover:bg-[var(--primary-darker)] focus-visible:shadow-[var(--shadow-button-primary-focus)]" },
+    { variant: "primary", mode: "stroke", class: "bg-white text-[var(--primary-base)] ring-[var(--primary-base)] hover:bg-[var(--primary-alpha-10)] hover:ring-transparent" },
+    { variant: "primary", mode: "lighter", class: "bg-[var(--primary-alpha-10)] text-[var(--primary-base)] ring-transparent hover:bg-white hover:ring-[var(--primary-base)]" },
+    { variant: "neutral", mode: "filled", class: "bg-[var(--bg-strong-950)] text-white hover:bg-[var(--bg-surface-800)] focus-visible:shadow-[var(--shadow-button-important-focus)]" },
+    { variant: "neutral", mode: "stroke", class: "bg-white text-[var(--text-sub-600)] shadow-[var(--shadow-regular-xs)] ring-[var(--stroke-soft-200)] hover:bg-[var(--bg-weak-50)] hover:text-[var(--text-strong-950)]" },
+    { variant: "neutral", mode: "ghost", class: "bg-transparent text-[var(--text-sub-600)] ring-transparent hover:bg-[var(--bg-weak-50)] hover:text-[var(--text-strong-950)]" },
+    { variant: "error", mode: "filled", class: "bg-[var(--error-base)] text-white hover:brightness-95 focus-visible:shadow-[var(--shadow-button-error-focus)]" },
+  ],
+  defaultVariants: {
+    variant: "primary",
+    mode: "filled",
+    size: "medium",
+  },
+});
 
-const variants: Record<ButtonVariant, string> = {
-  primary: "border-transparent bg-[var(--brand)] text-[var(--brand-foreground)] hover:bg-[var(--brand-strong)]",
-  secondary: "border-[var(--border)] bg-[var(--surface)] text-[var(--foreground)] hover:bg-[var(--muted)]",
-  ghost: "border-transparent bg-transparent text-[var(--foreground)] hover:bg-[var(--muted)]",
-  danger: "border-transparent bg-[var(--danger)] text-white hover:brightness-95",
-};
-
-export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: ButtonVariant;
+export interface ButtonProps
+  extends ButtonHTMLAttributes<HTMLButtonElement>,
+    VariantProps<typeof buttonVariants> {
+  asChild?: boolean;
 }
 
-export function Button({ className, variant = "primary", type = "button", ...props }: ButtonProps) {
-  return (
-    <button
-      type={type}
-      className={cn(
-        "inline-flex min-h-11 items-center justify-center rounded-lg border px-4 py-2 text-sm font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--focus)] focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60",
-        variants[variant],
-        className,
-      )}
-      {...props}
-    />
-  );
+export function Root({ className, variant, mode, size, asChild, type = "button", ...props }: ButtonProps) {
+  const Component = asChild ? Slot : "button";
+  return <Component type={type} className={buttonVariants({ variant, mode, size, className })} {...props} />;
+}
+
+export function Icon({ as: Component, className, ...props }: SVGProps<SVGSVGElement> & { as?: ElementType }) {
+  const IconComponent = Component ?? "span";
+  return <IconComponent className={cn("size-5 shrink-0", className)} {...props} />;
+}
+
+export function Button(props: ButtonProps) {
+  return <Root {...props} />;
 }

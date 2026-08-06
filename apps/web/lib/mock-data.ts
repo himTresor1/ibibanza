@@ -12,7 +12,11 @@ export const plots = [
     landUse: "Guturwamo",
     status: "published",
     remainingCount: 8,
-    imageUrl: "https://images.unsplash.com/photo-1500382017468-9049fed747ef",
+    imageUrls: [
+      "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1449157291145-7efd050a4d0e?auto=format&fit=crop&w=1200&q=80",
+    ],
     badges: ["Amafoto yagenzuwe", "Aho kiri hemejwe", "Gusura birashoboka"],
   },
   {
@@ -26,7 +30,11 @@ export const plots = [
     landUse: "Guturwamo",
     status: "published",
     remainingCount: 3,
-    imageUrl: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee",
+    imageUrls: [
+      "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1449157291145-7efd050a4d0e?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1200&q=80",
+    ],
     badges: ["UPI/document birategerejwe", "Gusura weekend"],
   },
   {
@@ -40,7 +48,11 @@ export const plots = [
     landUse: "Ubucuruzi",
     status: "reserved",
     remainingCount: 5,
-    imageUrl: "https://images.unsplash.com/photo-1500382017468-9049fed747ef",
+    imageUrls: [
+      "https://images.unsplash.com/photo-1449157291145-7efd050a4d0e?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80",
+    ],
     badges: ["Aho kiri hemejwe", "Umuhanda uri hafi"],
   },
 ];

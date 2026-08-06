@@ -31,8 +31,8 @@ export default function AdminUiPage() {
           </label>
           <div className="flex flex-wrap gap-3">
             <Button>Ohereza</Button>
-            <Button variant="secondary">Bika nka draft</Button>
-            <Button variant="danger">Siba</Button>
+            <Button variant="neutral" mode="stroke">Bika nka draft</Button>
+            <Button variant="error">Siba</Button>
           </div>
         </Card>
 

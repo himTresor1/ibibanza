@@ -9,7 +9,7 @@ export default function AdminLeadsPage() {
         {leads.map((lead) => (
           <Card key={lead.id} className="grid gap-3 sm:grid-cols-[1fr_auto] sm:items-center">
             <div><strong>{lead.buyerName}</strong><p>{lead.buyerPhone} - {lead.plot.title}</p><p className="text-sm text-[var(--muted-foreground)]">{lead.status}</p></div>
-            <div className="flex gap-2"><a href={`tel:${lead.buyerPhone}`}><Button>Call</Button></a><a href={`https://wa.me/${platformPhone.replace("+", "")}`}><Button variant="secondary">WhatsApp</Button></a></div>
+            <div className="flex gap-2"><a href={`tel:${lead.buyerPhone}`}><Button>Call</Button></a><a href={`https://wa.me/${platformPhone.replace("+", "")}`}><Button variant="neutral" mode="stroke">WhatsApp</Button></a></div>
           </Card>
         ))}
       </div>

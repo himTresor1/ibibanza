@@ -1,16 +1,51 @@
-import type { InputHTMLAttributes } from "react";
+import type { InputHTMLAttributes, ReactNode } from "react";
+import { tv, type VariantProps } from "tailwind-variants";
 import { cn } from "../lib/cn";
 
-export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {}
+export const inputVariants = tv({
+  slots: {
+    root: [
+      "group relative flex w-full overflow-hidden bg-white text-[var(--text-strong-950)] shadow-[var(--shadow-regular-xs)]",
+      "transition duration-200 ease-out before:pointer-events-none before:absolute before:inset-0 before:rounded-[inherit] before:ring-1 before:ring-inset before:ring-[var(--stroke-soft-200)]",
+      "has-[input:focus]:shadow-[var(--shadow-button-important-focus)] has-[input:focus]:before:ring-[var(--text-strong-950)]",
+    ],
+    wrapper: "flex w-full cursor-text items-center bg-white transition duration-200 ease-out hover:bg-[var(--bg-weak-50)]",
+    input: "w-full bg-transparent text-sm text-[var(--text-strong-950)] outline-none placeholder:text-[var(--text-soft-400)] focus:outline-none",
+  },
+  variants: {
+    size: {
+      medium: { root: "rounded-[10px]", wrapper: "gap-2 px-3", input: "h-10" },
+      small: { root: "rounded-lg", wrapper: "gap-2 px-2.5", input: "h-9" },
+      xsmall: { root: "rounded-lg", wrapper: "gap-1.5 px-2", input: "h-8" },
+    },
+    hasError: {
+      true: { root: "before:ring-[var(--error-base)] has-[input:focus]:shadow-[var(--shadow-button-error-focus)] has-[input:focus]:before:ring-[var(--error-base)]" },
+    },
+  },
+  defaultVariants: { size: "medium" },
+});
 
-export function Input({ className, ...props }: InputProps) {
+type InputSharedProps = VariantProps<typeof inputVariants>;
+
+export function Root({ className, children, size, hasError }: { className?: string; children: ReactNode } & InputSharedProps) {
+  const styles = inputVariants({ size, hasError });
+  return <div className={styles.root({ className })}>{children}</div>;
+}
+
+export function Wrapper({ className, children, size }: { className?: string; children: ReactNode } & InputSharedProps) {
+  const styles = inputVariants({ size });
+  return <label className={styles.wrapper({ className })}>{children}</label>;
+}
+
+export interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, "size">, InputSharedProps {}
+
+export function Input({ className, size, hasError, ...props }: InputProps) {
+  const styles = inputVariants({ size, hasError });
   return (
-    <input
-      className={cn(
-        "min-h-11 w-full rounded-lg border border-[var(--border)] bg-[var(--surface)] px-3 py-2 text-base text-[var(--foreground)] shadow-sm placeholder:text-[var(--muted-foreground)] focus:border-[var(--brand)] focus:outline-none focus:ring-2 focus:ring-[var(--focus)] disabled:cursor-not-allowed disabled:bg-[var(--muted)] disabled:text-[var(--muted-foreground)] md:text-sm",
-        className,
-      )}
-      {...props}
-    />
+    <Root size={size} hasError={hasError}>
+      <Wrapper size={size}>
+        <input className={styles.input({ className })} {...props} />
+      </Wrapper>
+    </Root>
   );
 }
