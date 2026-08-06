@@ -6,12 +6,13 @@
   "types": "./src/index.ts",
   "scripts": {
     "typecheck": "tsc --noEmit",
-    "test": "echo \"shared tests pending\""
+    "test": "vitest run"
   },
   "dependencies": {
     "zod": "^4.0.0"
   },
   "devDependencies": {
-    "typescript": "^5.0.0"
+    "typescript": "^5.0.0",
+    "vitest": "^4.0.0"
   }
 }
