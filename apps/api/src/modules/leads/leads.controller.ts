@@ -1,0 +1,29 @@
+import { Body, Controller, Get, Param, Patch, Post, UseGuards, UsePipes } from "@nestjs/common";
+import { BuyerInterestSchema, LeadStatusUpdateSchema } from "@ibibanza/shared";
+import { AdminApiKeyGuard } from "../../common/security/admin-api-key.guard";
+import { ZodValidationPipe } from "../../common/validation/zod-validation.pipe";
+import { LeadsService } from "./leads.service";
+
+@Controller()
+export class LeadsController {
+  constructor(private readonly leads: LeadsService) {}
+
+  @Post("plots/:plotId/interests")
+  @UsePipes(new ZodValidationPipe(BuyerInterestSchema.omit({ plotId: true })))
+  create(@Param("plotId") plotId: string, @Body() body: Omit<Parameters<LeadsService["create"]>[0], "plotId">) {
+    return this.leads.create({ ...body, plotId });
+  }
+
+  @UseGuards(AdminApiKeyGuard)
+  @Get("admin/leads")
+  listAdmin() {
+    return this.leads.listAdmin();
+  }
+
+  @UseGuards(AdminApiKeyGuard)
+  @Patch("admin/leads/:id/status")
+  @UsePipes(new ZodValidationPipe(LeadStatusUpdateSchema))
+  updateStatus(@Param("id") id: string, @Body() body: Parameters<LeadsService["updateStatus"]>[1]) {
+    return this.leads.updateStatus(id, body);
+  }
+}

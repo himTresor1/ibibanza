@@ -8,15 +8,24 @@
     "build": "nest build",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
-    "test": "jest --passWithNoTests"
+    "test": "jest --passWithNoTests",
+    "prisma:generate": "prisma generate",
+    "prisma:migrate": "prisma migrate dev",
+    "prisma:seed": "tsx prisma/seed.ts"
   },
   "dependencies": {
     "@ibibanza/shared": "file:../../packages/shared",
     "@nestjs/common": "^11.0.0",
+    "@nestjs/config": "^4.0.4",
     "@nestjs/core": "^11.0.0",
     "@nestjs/platform-express": "^11.0.0",
+    "@nestjs/swagger": "^11.4.6",
+    "@nestjs/throttler": "^6.5.0",
+    "@prisma/client": "^6.19.0",
     "reflect-metadata": "^0.2.0",
-    "rxjs": "^7.8.0"
+    "rxjs": "^7.8.0",
+    "swagger-ui-express": "^5.0.1",
+    "zod": "^4.4.3"
   },
   "devDependencies": {
     "@nestjs/cli": "^11.0.0",
@@ -27,9 +36,11 @@
     "@types/node": "^20.0.0",
     "eslint": "^9.0.0",
     "jest": "^30.0.0",
+    "prisma": "^6.19.0",
     "ts-jest": "^29.0.0",
     "ts-node": "^10.9.0",
-    "typescript-eslint": "^8.0.0",
-    "typescript": "^5.0.0"
+    "tsx": "^4.20.6",
+    "typescript": "^5.0.0",
+    "typescript-eslint": "^8.0.0"
   }
 }

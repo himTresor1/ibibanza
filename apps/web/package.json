@@ -11,12 +11,15 @@
     "test": "echo \"web tests pending\""
   },
   "dependencies": {
+    "@hookform/resolvers": "^5.7.1",
     "@ibibanza/shared": "file:../../packages/shared",
     "@ibibanza/ui": "file:../../packages/ui",
     "@tailwindcss/postcss": "^4.0.0",
+    "lucide-react": "^1.29.0",
     "next": "16.2.6",
     "react": "19.2.4",
     "react-dom": "19.2.4",
+    "react-hook-form": "^7.84.0",
     "tailwindcss": "^4.0.0"
   },
   "devDependencies": {

@@ -1,0 +1,198 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum LandUse {
+  residential
+  commercial
+  farming
+  mixed
+  unknown
+}
+
+enum PlotStatus {
+  draft
+  pending_review
+  published
+  reserved
+  sold
+  archived
+}
+
+enum LeadStatus {
+  new
+  called
+  visit_scheduled
+  visited
+  negotiating
+  won
+  lost
+}
+
+enum BuyerUrgency {
+  now
+  this_month
+  later
+}
+
+enum BuyerType {
+  local
+  diaspora
+}
+
+enum PreferredLanguage {
+  rw
+  en
+  fr
+}
+
+enum AlertStatus {
+  draft
+  sent
+}
+
+enum RecipientStatus {
+  pending
+  sent
+  replied
+  skipped
+}
+
+model Seller {
+  id        String   @id @default(cuid())
+  name      String
+  phone     String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  plots     Plot[]
+}
+
+model Plot {
+  id                String       @id @default(cuid())
+  slug              String       @unique
+  title             String
+  district          String
+  sector            String
+  priceRwf          Int
+  sizeSqm           Int
+  landUse           LandUse
+  status            PlotStatus   @default(pending_review)
+  accessNotes       String?
+  publicNotes       String?
+  internalNotes     String?
+  exactLocation     String?
+  upi               String?
+  documentsChecked  Boolean      @default(false)
+  locationConfirmed Boolean      @default(false)
+  photosChecked     Boolean      @default(false)
+  viewingAvailable  Boolean      @default(true)
+  remainingCount    Int?
+  sellerId          String
+  seller            Seller       @relation(fields: [sellerId], references: [id])
+  images            PlotImage[]
+  leads             Lead[]
+  alertDrafts       AlertDraft[]
+  createdAt         DateTime     @default(now())
+  updatedAt         DateTime     @updatedAt
+}
+
+model PlotImage {
+  id        String   @id @default(cuid())
+  url       String
+  alt       String?
+  plotId    String
+  plot      Plot     @relation(fields: [plotId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+}
+
+model Buyer {
+  id                  String             @id @default(cuid())
+  name                String
+  phone               String             @unique
+  locations           String[]
+  minBudget           Int?
+  maxBudget           Int?
+  landUses            LandUse[]
+  urgency             BuyerUrgency
+  buyerType           BuyerType
+  language            PreferredLanguage  @default(rw)
+  consentWhatsapp     Boolean            @default(false)
+  whatsappOptInAt     DateTime?
+  whatsappOptInSource String?
+  createdAt           DateTime           @default(now())
+  updatedAt           DateTime           @updatedAt
+  leads               Lead[]
+  alertRecipients     AlertRecipient[]
+  pushSubscriptions   PushSubscription[]
+}
+
+model Lead {
+  id                 String     @id @default(cuid())
+  plotId             String
+  plot               Plot       @relation(fields: [plotId], references: [id])
+  buyerId            String?
+  buyer              Buyer?     @relation(fields: [buyerId], references: [id])
+  buyerName          String
+  buyerPhone         String
+  preferredVisitTime String?
+  note               String?
+  status             LeadStatus @default(new)
+  statusNote         String?
+  createdAt          DateTime   @default(now())
+  updatedAt          DateTime   @updatedAt
+}
+
+model AlertDraft {
+  id             String           @id @default(cuid())
+  plotId         String
+  plot           Plot             @relation(fields: [plotId], references: [id])
+  title          String
+  message        String
+  remainingCount Int?
+  visitWindow    String?
+  status         AlertStatus      @default(draft)
+  recipients     AlertRecipient[]
+  createdAt      DateTime         @default(now())
+  sentAt         DateTime?
+}
+
+model AlertRecipient {
+  id      String          @id @default(cuid())
+  alertId String
+  alert   AlertDraft      @relation(fields: [alertId], references: [id], onDelete: Cascade)
+  buyerId String
+  buyer   Buyer           @relation(fields: [buyerId], references: [id])
+  phone   String
+  status  RecipientStatus @default(pending)
+  sentAt  DateTime?
+}
+
+model PushSubscription {
+  id        String   @id @default(cuid())
+  buyerId   String?
+  buyer     Buyer?   @relation(fields: [buyerId], references: [id])
+  endpoint  String   @unique
+  payload   Json
+  createdAt DateTime @default(now())
+}
+
+model AdminUser {
+  id         String   @id @default(cuid())
+  name       String
+  apiKeyHint String?
+  createdAt  DateTime @default(now())
+}
+
+model AuditLog {
+  id        String   @id @default(cuid())
+  action    String
+  entity    String
+  entityId  String?
+  metadata  Json?
+  createdAt DateTime @default(now())
+}
