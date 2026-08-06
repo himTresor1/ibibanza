@@ -8,7 +8,7 @@
     "start": "next start --port 3000",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
-    "test": "echo \"web tests pending\""
+    "test": "vitest run"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.7.1",
@@ -27,8 +27,13 @@
     "@types/node": "^20.0.0",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
+    "@testing-library/jest-dom": "^6.0.0",
+    "@testing-library/react": "^16.0.0",
+    "@vitejs/plugin-react": "^5.0.0",
     "eslint": "^9.0.0",
     "eslint-config-next": "16.2.6",
-    "typescript": "^5.0.0"
+    "jsdom": "^27.0.0",
+    "typescript": "^5.0.0",
+    "vitest": "^4.0.0"
   }
 }
