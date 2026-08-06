@@ -1,7 +1,8 @@
-import { Badge, Button, Card } from "@ibibanza/ui";
+import { Badge, Card } from "@ibibanza/ui";
 import Link from "next/link";
+import Image from "next/image";
 import { RiArrowRightLine, RiMapPin2Line } from "@remixicon/react";
-import { formatRwf, platformPhone } from "../../lib/mock-data";
+import { formatRwf } from "../../lib/mock-data";
 
 interface PlotCardProps {
   plot: {
@@ -22,35 +23,53 @@ export function PlotCard({ plot }: PlotCardProps) {
   return (
     <Card className="group overflow-hidden p-0 transition duration-200 hover:-translate-y-0.5 hover:shadow-[0_10px_24px_rgba(14,18,27,0.08)]">
       <div className="relative">
-        <div className="flex snap-x snap-mandatory overflow-x-auto scroll-smooth [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        <div
+          aria-label={`Amafoto ya ${plot.title}`}
+          className="flex snap-x snap-mandatory overflow-x-auto scroll-smooth [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        >
           {plot.imageUrls.map((imageUrl, index) => (
-            <img
-              key={imageUrl}
-              src={imageUrl}
-              alt={`${plot.title} - ifoto ${index + 1}`}
-              className="aspect-[1.15] w-full shrink-0 snap-center object-cover"
-            />
+            <div key={imageUrl} className="relative aspect-[4/3] w-full shrink-0 snap-center overflow-hidden">
+              <Image
+                fill
+                sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                src={imageUrl}
+                alt={`${plot.title} - ifoto ${index + 1}`}
+                className="object-cover transition duration-300 group-hover:scale-[1.03]"
+              />
+            </div>
           ))}
         </div>
-        <div className="absolute bottom-3 left-1/2 flex -translate-x-1/2 gap-1.5">
-          {plot.imageUrls.map((imageUrl) => <span key={imageUrl} className="size-1.5 rounded-full bg-white/90 shadow" />)}
-        </div>
+        <span className="absolute bottom-2 left-2 rounded-md bg-black/65 px-1.5 py-1 text-[11px] font-semibold text-white">
+          Amafoto {plot.imageUrls.length}
+        </span>
+        <Link
+          href={`/plots/${plot.slug}`}
+          aria-label={`Fungura ${plot.title}`}
+          className="absolute right-2 top-2 inline-flex size-11 items-center justify-center rounded-full bg-white text-[var(--text-strong-950)] shadow-[0_2px_10px_rgba(14,18,27,0.16)] transition hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--primary-base)]"
+        >
+          <RiArrowRightLine className="size-5" />
+        </Link>
       </div>
-      <div className="space-y-4 p-4">
-        <div>
-          <p className="flex items-center gap-1.5 text-sm text-[var(--text-sub-600)]"><RiMapPin2Line className="size-4" />{plot.sector}, {plot.district}</p>
-          <h2 className="mt-1 text-lg font-semibold tracking-[-0.01em] text-[var(--text-strong-950)]">{plot.title}</h2>
-        </div>
-        <div className="grid grid-cols-3 gap-2 text-sm">
-          <div><span className="block text-[var(--text-soft-400)]">Igiciro</span><strong>{formatRwf(plot.priceRwf)}</strong></div>
-          <div><span className="block text-[var(--text-soft-400)]">Ingano</span><strong>{plot.sizeSqm} sqm</strong></div>
-          <div><span className="block text-[var(--text-soft-400)]">Hasigaye</span><strong>{plot.remainingCount ?? "-"}</strong></div>
-        </div>
-        <div className="flex flex-wrap gap-2">{plot.badges.map((badge) => <Badge key={badge}>{badge}</Badge>)}</div>
-        <div className="grid gap-2 sm:grid-cols-2">
-          <Button asChild className="w-full"><Link href={`/plots/${plot.slug}`}>Reba neza <RiArrowRightLine className="size-4" /></Link></Button>
-          <Button asChild variant="neutral" mode="stroke" className="w-full"><a href={`tel:${platformPhone}`}>Hamagara</a></Button>
-        </div>
+      <div className="space-y-2.5 p-3">
+        <p className="flex items-center gap-1 text-xs font-medium text-[var(--text-sub-600)]">
+          <RiMapPin2Line className="size-3.5 shrink-0 text-[var(--primary-base)]" />
+          <span className="truncate">{plot.sector}, {plot.district}</span>
+        </p>
+        <Link href={`/plots/${plot.slug}`} className="block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--primary-base)]">
+          <h2 className="line-clamp-2 min-h-10 text-sm font-semibold leading-5 text-[var(--text-strong-950)]">{plot.title}</h2>
+          <p className="mt-1 text-sm font-bold text-[var(--text-strong-950)]">{formatRwf(plot.priceRwf)}</p>
+        </Link>
+        <dl className="grid grid-cols-2 gap-x-2 text-xs text-[var(--text-sub-600)]">
+          <div>
+            <dt className="text-[var(--text-soft-400)]">Ingano</dt>
+            <dd className="mt-0.5 font-semibold text-[var(--text-strong-950)]">{plot.sizeSqm} sqm</dd>
+          </div>
+          <div>
+            <dt className="text-[var(--text-soft-400)]">Hasigaye</dt>
+            <dd className="mt-0.5 font-semibold text-[var(--text-strong-950)]">{plot.remainingCount ?? "-"}</dd>
+          </div>
+        </dl>
+        {plot.badges[0] ? <Badge className="max-w-full truncate">{plot.badges[0]}</Badge> : null}
       </div>
     </Card>
   );

@@ -21,6 +21,17 @@ export function parsePlotSearch(input: Record<string, SearchParamValue>): PlotSe
   };
 }
 
+export function buildPlotSearchHref(search: PlotSearch) {
+  const params = new URLSearchParams();
+
+  if (search.location) params.set("location", search.location);
+  if (search.maxPrice) params.set("maxPrice", String(search.maxPrice));
+  if (search.landUse) params.set("landUse", search.landUse);
+
+  const query = params.toString();
+  return query ? `/search?${query}` : "/search";
+}
+
 export function filterPlots<Plot extends {
   district: string;
   sector: string;

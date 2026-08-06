@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { plots } from "./mock-data";
-import { filterPlots, parsePlotSearch } from "./plot-search";
+import { buildPlotSearchHref, filterPlots, parsePlotSearch } from "./plot-search";
 
 describe("plot search", () => {
   it("matches a normalized location, price ceiling, and land use", () => {
@@ -14,16 +14,12 @@ describe("plot search", () => {
   });
 
   it("creates a shareable URL from visible search fields", () => {
-    const search = parsePlotSearch({
-      location: "Kanombe",
-      maxPrice: "40000000",
-      landUse: "Guturwamo",
-    });
-
-    expect(search).toEqual({
-      location: "Kanombe",
-      maxPrice: 40000000,
-      landUse: "Guturwamo",
-    });
+    expect(
+      buildPlotSearchHref({
+        location: "Kanombe",
+        maxPrice: 40000000,
+        landUse: "Guturwamo",
+      }),
+    ).toBe("/search?location=Kanombe&maxPrice=40000000&landUse=Guturwamo");
   });
 });
