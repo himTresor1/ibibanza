@@ -21,9 +21,10 @@ export const buttonVariants = tv({
       ghost: "ring-1 ring-inset",
     },
     size: {
-      medium: "h-10 gap-3 rounded-[10px] px-3.5 text-sm font-semibold",
-      small: "h-9 gap-3 rounded-lg px-3 text-sm font-semibold",
-      xsmall: "h-8 gap-2.5 rounded-lg px-2.5 text-sm font-semibold",
+      large: "h-14 gap-3 rounded-xl px-6 text-base font-semibold",
+      medium: "h-10 gap-3 rounded-xl px-3.5 text-sm font-semibold",
+      small: "h-9 gap-3 rounded-xl px-3 text-sm font-semibold",
+      xsmall: "h-8 gap-2.5 rounded-xl px-2.5 text-sm font-semibold",
     },
   },
   compoundVariants: [

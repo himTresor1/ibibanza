@@ -14,9 +14,9 @@ export const inputVariants = tv({
   },
   variants: {
     size: {
-      medium: { root: "rounded-[10px]", wrapper: "gap-2 px-3", input: "h-10" },
-      small: { root: "rounded-lg", wrapper: "gap-2 px-2.5", input: "h-9" },
-      xsmall: { root: "rounded-lg", wrapper: "gap-1.5 px-2", input: "h-8" },
+      medium: { root: "rounded-xl", wrapper: "gap-2 px-3", input: "h-10" },
+      small: { root: "rounded-xl", wrapper: "gap-2 px-2.5", input: "h-9" },
+      xsmall: { root: "rounded-xl", wrapper: "gap-1.5 px-2", input: "h-8" },
     },
     hasError: {
       true: { root: "before:ring-[var(--error-base)] has-[input:focus]:shadow-[var(--shadow-button-error-focus)] has-[input:focus]:before:ring-[var(--error-base)]" },
