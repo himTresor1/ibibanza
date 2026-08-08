@@ -1,51 +1,29 @@
-import type { InputHTMLAttributes, ReactNode } from "react";
+import type { InputHTMLAttributes } from "react";
 import { tv, type VariantProps } from "tailwind-variants";
 import { cn } from "../lib/cn";
 
 export const inputVariants = tv({
-  slots: {
-    root: [
-      "group relative flex w-full overflow-hidden bg-white text-[var(--text-strong-950)] shadow-[var(--shadow-regular-xs)]",
-      "transition duration-200 ease-out before:pointer-events-none before:absolute before:inset-0 before:rounded-[inherit] before:ring-1 before:ring-inset before:ring-[var(--stroke-soft-200)]",
-      "has-[input:focus]:shadow-[var(--shadow-button-important-focus)] has-[input:focus]:before:ring-[var(--text-strong-950)]",
-    ],
-    wrapper: "flex w-full cursor-text items-center bg-white transition duration-200 ease-out hover:bg-[var(--bg-weak-50)]",
-    input: "w-full bg-transparent text-sm text-[var(--text-strong-950)] outline-none placeholder:text-[var(--text-soft-400)] focus:outline-none",
-  },
+  base: [
+    "w-full rounded-xl border border-[var(--border)] bg-[var(--surface)] text-[var(--foreground)] shadow-sm outline-none",
+    "transition duration-200 ease-out placeholder:text-[var(--muted-foreground)]",
+    "focus:border-[var(--brand)] focus:ring-2 focus:ring-[var(--focus)]",
+    "disabled:cursor-not-allowed disabled:bg-[var(--muted)] disabled:text-[var(--muted-foreground)]",
+  ],
   variants: {
     size: {
-      medium: { root: "rounded-xl", wrapper: "gap-2 px-3", input: "h-10" },
-      small: { root: "rounded-xl", wrapper: "gap-2 px-2.5", input: "h-9" },
-      xsmall: { root: "rounded-xl", wrapper: "gap-1.5 px-2", input: "h-8" },
+      medium: "h-10 px-3 text-sm",
+      small: "h-9 px-2.5 text-sm",
+      xsmall: "h-8 px-2 text-sm",
     },
     hasError: {
-      true: { root: "before:ring-[var(--error-base)] has-[input:focus]:shadow-[var(--shadow-button-error-focus)] has-[input:focus]:before:ring-[var(--error-base)]" },
+      true: "border-[var(--danger)] focus:border-[var(--danger)] focus:ring-[var(--red-alpha-10)]",
     },
   },
   defaultVariants: { size: "medium" },
 });
 
-type InputSharedProps = VariantProps<typeof inputVariants>;
-
-export function Root({ className, children, size, hasError }: { className?: string; children: ReactNode } & InputSharedProps) {
-  const styles = inputVariants({ size, hasError });
-  return <div className={styles.root({ className })}>{children}</div>;
-}
-
-export function Wrapper({ className, children, size }: { className?: string; children: ReactNode } & InputSharedProps) {
-  const styles = inputVariants({ size });
-  return <label className={styles.wrapper({ className })}>{children}</label>;
-}
-
-export interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, "size">, InputSharedProps {}
+export interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, "size">, VariantProps<typeof inputVariants> {}
 
 export function Input({ className, size, hasError, ...props }: InputProps) {
-  const styles = inputVariants({ size, hasError });
-  return (
-    <Root size={size} hasError={hasError}>
-      <Wrapper size={size}>
-        <input className={styles.input({ className })} {...props} />
-      </Wrapper>
-    </Root>
-  );
+  return <input className={cn(inputVariants({ size, hasError }), className)} {...props} />;
 }

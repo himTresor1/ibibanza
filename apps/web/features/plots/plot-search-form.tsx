@@ -10,7 +10,7 @@ interface PlotSearchFormProps {
   initialSearch?: Partial<PlotSearch>;
 }
 
-const segmentField = "h-full w-full border-0 bg-transparent px-0 shadow-none focus:ring-0";
+const segmentField = "w-full border-transparent bg-transparent px-0 shadow-none focus:border-transparent focus:ring-0";
 
 export function PlotSearchForm({ initialSearch }: PlotSearchFormProps) {
   const router = useRouter();
@@ -75,7 +75,7 @@ export function PlotSearchForm({ initialSearch }: PlotSearchFormProps) {
             {LAND_USE_OPTIONS.map((option) => <option key={option} value={option}>{option}</option>)}
           </Select>
         </div>
-        <Button type="submit" className="mt-1 h-12 w-full shrink-0 gap-2 rounded-full sm:mt-0 sm:w-auto sm:px-6">
+        <Button type="submit" size="large" className="mt-1 w-full shrink-0 gap-2 sm:mt-0 sm:w-auto">
           <RiSearchLine className="size-5" />
           Shaka ibibanza
         </Button>

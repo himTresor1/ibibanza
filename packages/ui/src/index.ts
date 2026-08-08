@@ -4,7 +4,7 @@ export { Button, Icon as ButtonIcon, Root as ButtonRoot, buttonVariants } from "
 export { Card } from "./components/card";
 export { Checkbox } from "./components/checkbox";
 export { FormField } from "./components/form-field";
-export { Input, Root as InputRoot, Wrapper as InputWrapper, inputVariants } from "./components/input";
+export { Input, inputVariants } from "./components/input";
 export { Select } from "./components/select";
 export { Table, TableCell, TableHead } from "./components/table";
 export { Textarea } from "./components/textarea";

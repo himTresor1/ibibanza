@@ -37,7 +37,7 @@ export default async function PlotDetailPage({ params }: { params: Promise<{ slu
             <section className="grid grid-cols-2 border-y border-[var(--stroke-soft-200)] sm:grid-cols-4">
               <div className="border-b border-r border-[var(--stroke-soft-200)] px-3 py-4 sm:border-b-0">
                 <p className="text-xs font-medium text-[var(--text-soft-400)]">Igiciro</p>
-                <p className="mt-1 text-base font-bold text-[var(--text-strong-950)]">{formatRwf(plot.priceRwf)}</p>
+                <p className="mt-1 font-mono text-lg font-bold text-[var(--primary-base)]">{formatRwf(plot.priceRwf)}</p>
               </div>
               <div className="border-b border-[var(--stroke-soft-200)] px-3 py-4 sm:border-b-0 sm:border-r">
                 <p className="text-xs font-medium text-[var(--text-soft-400)]">Ingano</p>
