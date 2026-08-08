@@ -1,8 +1,12 @@
 import { describe, expect, it } from "vitest";
 import { plots } from "./mock-data";
-import { buildPlotSearchHref, filterPlots, parsePlotSearch } from "./plot-search";
+import { LAND_USE_OPTIONS, buildPlotSearchHref, filterPlots, parsePlotSearch } from "./plot-search";
 
 describe("plot search", () => {
+  it("exposes the three land-use categories in a fixed order", () => {
+    expect(LAND_USE_OPTIONS).toEqual(["Guturwamo", "Ubucuruzi", "Ubuhinzi"]);
+  });
+
   it("matches a normalized location, price ceiling, and land use", () => {
     const search = parsePlotSearch({
       location: " nyamata ",

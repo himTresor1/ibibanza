@@ -4,6 +4,8 @@ export interface PlotSearch {
   landUse: string;
 }
 
+export const LAND_USE_OPTIONS = ["Guturwamo", "Ubucuruzi", "Ubuhinzi"] as const;
+
 type SearchParamValue = string | string[] | undefined;
 
 function firstValue(value: SearchParamValue) {
