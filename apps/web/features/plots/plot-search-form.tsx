@@ -1,14 +1,16 @@
 "use client";
 
 import { Button, Input, Select } from "@ibibanza/ui";
-import { RiMapPin2Line, RiMoneyDollarCircleLine, RiSearchLine, RiShapeLine } from "@remixicon/react";
+import { RiSearchLine } from "@remixicon/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { buildPlotSearchHref, type PlotSearch } from "../../lib/plot-search";
+import { LAND_USE_OPTIONS, buildPlotSearchHref, type PlotSearch } from "../../lib/plot-search";
 
 interface PlotSearchFormProps {
   initialSearch?: Partial<PlotSearch>;
 }
+
+const segmentField = "h-full w-full border-0 bg-transparent px-0 shadow-none focus:ring-0";
 
 export function PlotSearchForm({ initialSearch }: PlotSearchFormProps) {
   const router = useRouter();
@@ -31,10 +33,9 @@ export function PlotSearchForm({ initialSearch }: PlotSearchFormProps) {
 
   return (
     <form onSubmit={submitSearch} aria-label="Shakisha ibibanza">
-      <div className="grid gap-2 rounded-xl border border-[var(--stroke-soft-200)] bg-[var(--bg-white-0)] p-2 shadow-[0_14px_32px_rgba(14,18,27,0.08)] md:grid-cols-[1.2fr_0.9fr_0.9fr_auto] md:items-end">
-        <div className="min-w-0 px-2 py-1.5">
-          <label htmlFor="search-location" className="mb-2 flex items-center gap-2 text-sm font-semibold text-[var(--text-strong-950)]">
-            <RiMapPin2Line className="size-4 text-[var(--primary-base)]" />
+      <div className="flex flex-col gap-2 rounded-2xl bg-[var(--bg-white-0)] p-2 shadow-[var(--shadow-card)] sm:flex-row sm:items-center sm:gap-0 sm:rounded-full sm:p-1.5 sm:ring-1 sm:ring-inset sm:ring-[var(--stroke-soft-200)]">
+        <div className="min-w-0 flex-1 rounded-xl px-4 py-2 transition hover:bg-[var(--bg-weak-50)] sm:rounded-full">
+          <label htmlFor="search-location" className="block text-xs font-semibold text-[var(--text-strong-950)]">
             Aho ushaka
           </label>
           <Input
@@ -42,11 +43,12 @@ export function PlotSearchForm({ initialSearch }: PlotSearchFormProps) {
             value={location}
             onChange={(event) => setLocation(event.target.value)}
             placeholder="Nyamata, Kanombe..."
+            className={segmentField}
           />
         </div>
-        <div className="min-w-0 px-2 py-1.5">
-          <label htmlFor="search-budget" className="mb-2 flex items-center gap-2 text-sm font-semibold text-[var(--text-strong-950)]">
-            <RiMoneyDollarCircleLine className="size-4 text-[var(--primary-base)]" />
+        <div className="hidden h-8 w-px shrink-0 self-center bg-[var(--stroke-soft-200)] sm:block" />
+        <div className="min-w-0 flex-1 rounded-xl px-4 py-2 transition hover:bg-[var(--bg-weak-50)] sm:rounded-full">
+          <label htmlFor="search-budget" className="block text-xs font-semibold text-[var(--text-strong-950)]">
             Budget yawe
           </label>
           <Input
@@ -55,21 +57,25 @@ export function PlotSearchForm({ initialSearch }: PlotSearchFormProps) {
             onChange={(event) => setMaxPrice(event.target.value)}
             inputMode="numeric"
             placeholder="Urugero: 20,000,000"
+            className={segmentField}
           />
         </div>
-        <div className="min-w-0 px-2 py-1.5">
-          <label htmlFor="search-land-use" className="mb-2 flex items-center gap-2 text-sm font-semibold text-[var(--text-strong-950)]">
-            <RiShapeLine className="size-4 text-[var(--primary-base)]" />
+        <div className="hidden h-8 w-px shrink-0 self-center bg-[var(--stroke-soft-200)] sm:block" />
+        <div className="min-w-0 flex-1 rounded-xl px-4 py-2 transition hover:bg-[var(--bg-weak-50)] sm:rounded-full">
+          <label htmlFor="search-land-use" className="block text-xs font-semibold text-[var(--text-strong-950)]">
             Icyiciro
           </label>
-          <Select id="search-land-use" value={landUse} onChange={(event) => setLandUse(event.target.value)}>
+          <Select
+            id="search-land-use"
+            value={landUse}
+            onChange={(event) => setLandUse(event.target.value)}
+            className={segmentField}
+          >
             <option value="">Ibyiciro byose</option>
-            <option value="Guturwamo">Guturwamo</option>
-            <option value="Ubucuruzi">Ubucuruzi</option>
-            <option value="Ubuhinzi">Ubuhinzi</option>
+            {LAND_USE_OPTIONS.map((option) => <option key={option} value={option}>{option}</option>)}
           </Select>
         </div>
-        <Button type="submit" className="min-h-11 gap-2 px-5 md:mb-1.5">
+        <Button type="submit" className="mt-1 h-12 w-full shrink-0 gap-2 rounded-full sm:mt-0 sm:w-auto sm:px-6">
           <RiSearchLine className="size-5" />
           Shaka ibibanza
         </Button>
