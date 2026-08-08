@@ -23,7 +23,7 @@
   --error-base: #d7263d;
   --red-alpha-10: rgba(215, 38, 61, 0.1);
   --shadow-regular-xs: 0 1px 2px rgba(20, 20, 18, 0.06);
-  --shadow-button-primary-focus: 0 0 0 2px rgba(46, 125, 72, 0.18);
+  --shadow-button-primary-focus: 0 0 0 2px rgba(20, 20, 18, 0.18);
   --shadow-button-important-focus: 0 0 0 2px rgba(20, 20, 18, 0.12);
   --shadow-button-error-focus: 0 0 0 2px rgba(215, 38, 61, 0.18);
   --shadow-card: 0 2px 8px rgba(20, 20, 18, 0.08);
@@ -35,9 +35,9 @@
   --surface: var(--bg-white-0);
   --muted: var(--bg-soft-100);
   --muted-foreground: var(--text-sub-600);
-  --border: var(--stroke-soft-200);
+  --border: var(--stroke-sub-300);
   --danger: var(--error-base);
-  --focus: var(--primary-alpha-16);
+  --focus: rgba(20, 20, 18, 0.12);
 }
 
 * {
@@ -76,6 +76,6 @@ textarea {
 }
 
 :focus-visible {
-  outline: 2px solid var(--primary-base);
+  outline: 2px solid var(--text-soft-400);
   outline-offset: 2px;
 }

@@ -33,7 +33,7 @@ export function PlotSearchForm({ initialSearch }: PlotSearchFormProps) {
     <form
       onSubmit={submitSearch}
       aria-label="Shakisha ibibanza"
-      className="rounded-2xl bg-[var(--bg-white-0)] p-3 shadow-[var(--shadow-card)] sm:p-4"
+      className="rounded-3xl bg-[var(--bg-white-0)] p-3 shadow-[var(--shadow-card)] sm:p-4"
     >
       <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:gap-3">
         <div className="min-w-0 flex-1">
@@ -72,7 +72,7 @@ export function PlotSearchForm({ initialSearch }: PlotSearchFormProps) {
             {LAND_USE_OPTIONS.map((option) => <option key={option} value={option}>{option}</option>)}
           </Select>
         </div>
-        <Button type="submit" className="w-full gap-2 sm:w-fit">
+        <Button type="submit" className="gap-2">
           <RiSearchLine className="size-5" />
           Shaka ibibanza
         </Button>

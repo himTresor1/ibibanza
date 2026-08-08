@@ -6,7 +6,7 @@ export const inputVariants = tv({
   base: [
     "w-full rounded-xl border border-[var(--border)] bg-[var(--surface)] text-[var(--foreground)] shadow-sm outline-none",
     "transition duration-200 ease-out placeholder:text-[var(--muted-foreground)]",
-    "focus:border-[var(--brand)] focus:ring-2 focus:ring-[var(--focus)]",
+    "focus:border-[var(--text-soft-400)] focus:ring-2 focus:ring-[var(--focus)]",
     "disabled:cursor-not-allowed disabled:bg-[var(--muted)] disabled:text-[var(--muted-foreground)]",
   ],
   variants: {

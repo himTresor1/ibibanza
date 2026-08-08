@@ -34,9 +34,9 @@ export function BuyerInterestForm({ plotId }: { plotId: string }) {
         <FormField id="buyerPhone" label="Telefone yawe"><Input name="buyerPhone" placeholder="+250788123456" required /></FormField>
         <FormField id="preferredVisitTime" label="Igihe wifuza gusura"><Input name="preferredVisitTime" placeholder="Urugero: Ku wa Gatandatu" /></FormField>
         <FormField id="note" label="Icyo ushaka kubaza"><Textarea name="note" placeholder="Andika ikibazo cyangwa budget yawe." /></FormField>
-        <div className="grid gap-2 sm:grid-cols-2">
-          <Button type="submit" className="min-h-11 w-full">Ohereza ubusabe</Button>
-          <Button asChild variant="neutral" mode="stroke" className="min-h-11 w-full"><a href={`tel:${platformPhone}`}>Hamagara ubu</a></Button>
+        <div className="flex flex-wrap gap-2">
+          <Button type="submit">Ohereza ubusabe</Button>
+          <Button asChild variant="neutral" mode="stroke"><a href={`tel:${platformPhone}`}>Hamagara ubu</a></Button>
         </div>
         {status ? <p role="status" className="text-sm text-[var(--muted-foreground)]">{status}</p> : null}
       </form>

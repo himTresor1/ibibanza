@@ -27,7 +27,7 @@ export default function HomePage() {
             >
               Abo turi bo
             </Link>
-            <Button asChild size="small">
+            <Button asChild>
               <Link href="/submit-land">Ohereza ikibanza</Link>
             </Button>
           </div>

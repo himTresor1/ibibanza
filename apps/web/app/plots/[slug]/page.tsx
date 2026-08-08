@@ -74,7 +74,7 @@ export default async function PlotDetailPage({ params }: { params: Promise<{ slu
                 </h2>
                 <div className="mt-4 flex flex-wrap gap-2">
                   {plot.tags.map((tag) => (
-                    <Chip key={tag} className="cursor-default">
+                    <Chip key={tag} className="h-auto cursor-default px-2.5 py-1 text-xs">
                       {tag}
                     </Chip>
                   ))}

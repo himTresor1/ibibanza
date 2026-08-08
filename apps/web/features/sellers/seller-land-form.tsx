@@ -169,7 +169,7 @@ export function SellerLandForm() {
                 required
               />
             </FormField>
-            <Button type="button" size="medium" className="w-full" onClick={goNext}>
+            <Button type="button" onClick={goNext}>
               Komeza
             </Button>
           </>
@@ -215,11 +215,11 @@ export function SellerLandForm() {
                 onChange={update("tags")}
               />
             </FormField>
-            <div className="grid grid-cols-2 gap-2">
-              <Button type="button" variant="neutral" mode="stroke" size="medium" className="w-full" onClick={goBack}>
+            <div className="flex gap-2">
+              <Button type="button" variant="neutral" mode="stroke" onClick={goBack}>
                 Subira inyuma
               </Button>
-              <Button type="button" size="medium" className="w-full" onClick={goNext}>
+              <Button type="button" onClick={goNext}>
                 Komeza
               </Button>
             </div>
@@ -250,11 +250,11 @@ export function SellerLandForm() {
             <FormField id="sellerNotes" label="Ibisobanuro by'imbere">
               <Textarea name="sellerNotes" value={values.sellerNotes} onChange={update("sellerNotes")} />
             </FormField>
-            <div className="grid grid-cols-2 gap-2">
-              <Button type="button" variant="neutral" mode="stroke" size="medium" className="w-full" onClick={goBack}>
+            <div className="flex gap-2">
+              <Button type="button" variant="neutral" mode="stroke" onClick={goBack}>
                 Subira inyuma
               </Button>
-              <Button type="submit" size="medium" className="w-full">
+              <Button type="submit">
                 Ohereza ngo bigenzurwe
               </Button>
             </div>
