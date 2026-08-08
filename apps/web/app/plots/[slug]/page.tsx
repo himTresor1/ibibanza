@@ -89,7 +89,7 @@ export default async function PlotDetailPage({ params }: { params: Promise<{ slu
         </div>
       </div>
 
-      <div className="fixed inset-x-0 bottom-0 z-20 border-t border-[var(--stroke-soft-200)] bg-white/95 p-3 shadow-[0_-8px_24px_rgba(14,18,27,0.08)] backdrop-blur lg:hidden">
+      <div className="fixed inset-x-0 bottom-0 z-20 border-t border-[var(--stroke-soft-200)] bg-white/95 p-3 shadow-[0_-8px_24px_rgba(20,20,18,0.08)] backdrop-blur lg:hidden">
         <Button asChild className="min-h-11 w-full">
           <Link href="#visit-request">Tegura gusura</Link>
         </Button>
