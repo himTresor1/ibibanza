@@ -92,6 +92,7 @@ model Plot {
   photosChecked     Boolean      @default(false)
   viewingAvailable  Boolean      @default(true)
   remainingCount    Int?
+  tags              String[]     @default([])
   sellerId          String
   seller            Seller       @relation(fields: [sellerId], references: [id])
   images            PlotImage[]

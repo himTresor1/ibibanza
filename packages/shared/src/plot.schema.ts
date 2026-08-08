@@ -13,6 +13,7 @@ export const CreatePlotSchema = z.object({
   photoUrls: z.array(z.string().url()).min(1),
   accessNotes: z.string().trim().optional(),
   publicNotes: z.string().trim().optional(),
+  tags: z.array(z.string().min(1).max(60)).max(10).default([]),
 });
 
 export type CreatePlotInput = z.infer<typeof CreatePlotSchema>;

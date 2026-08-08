@@ -28,6 +28,7 @@ async function main() {
       photosChecked: true,
       locationConfirmed: true,
       viewingAvailable: true,
+      tags: ["Metero 300 uvuye ku muhanda", "Hafi y'ishuri ryisumbuye", "Amazi arahari"],
       images: {
         create: [
           {

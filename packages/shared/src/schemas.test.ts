@@ -72,6 +72,54 @@ describe("shared land schemas", () => {
     expect(result.success).toBe(false);
   });
 
+  it("accepts a seller submission with free-text plot tags", () => {
+    const result = SellerSubmissionSchema.safeParse({
+      sellerName: "Niyonsenga",
+      sellerPhone: "+250788123456",
+      district: "Bugesera",
+      sector: "Nyamata",
+      priceRwf: 12_000_000,
+      sizeSqm: 300,
+      landUse: "residential",
+      photoUrls: ["https://example.com/plot.jpg"],
+      tags: ["Metero 300 uvuye ku muhanda", "Amazi arahari"],
+    });
+
+    expect(result.success).toBe(true);
+  });
+
+  it("rejects a plot submission with more than 10 tags", () => {
+    const result = SellerSubmissionSchema.safeParse({
+      sellerName: "Niyonsenga",
+      sellerPhone: "+250788123456",
+      district: "Bugesera",
+      sector: "Nyamata",
+      priceRwf: 12_000_000,
+      sizeSqm: 300,
+      landUse: "residential",
+      photoUrls: ["https://example.com/plot.jpg"],
+      tags: Array.from({ length: 11 }, (_, index) => `Tag ${index}`),
+    });
+
+    expect(result.success).toBe(false);
+  });
+
+  it("rejects a plot tag longer than 60 characters", () => {
+    const result = SellerSubmissionSchema.safeParse({
+      sellerName: "Niyonsenga",
+      sellerPhone: "+250788123456",
+      district: "Bugesera",
+      sector: "Nyamata",
+      priceRwf: 12_000_000,
+      sizeSqm: 300,
+      landUse: "residential",
+      photoUrls: ["https://example.com/plot.jpg"],
+      tags: ["a".repeat(61)],
+    });
+
+    expect(result.success).toBe(false);
+  });
+
   it("provides Kinyarwanda labels for primary CTAs", () => {
     expect(kinyarwandaLabels.cta.callNow).toBe("Hamagara ubu");
     expect(kinyarwandaLabels.cta.requestVisit).toBe("Saba gusura ikibanza");

@@ -56,6 +56,7 @@ export class PlotsService {
         status: input.status,
         accessNotes: input.accessNotes,
         publicNotes: input.publicNotes,
+        tags: input.tags ?? [],
         sellerId: input.sellerId,
         images: { create: input.photoUrls.map((url) => ({ url, alt: input.title })) },
       },

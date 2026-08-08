@@ -18,6 +18,7 @@ export const plots = [
       "https://images.unsplash.com/photo-1449157291145-7efd050a4d0e?auto=format&fit=crop&w=1200&q=80",
     ],
     badges: ["Amafoto yagenzuwe", "Aho kiri hemejwe", "Gusura birashoboka"],
+    tags: ["300m ku muhanda", "Amashanyarazi arahari", "Hafi y'ishuri", "Amazi arahari"],
   },
   {
     id: "kigali-kanombe-35m",
@@ -36,6 +37,7 @@ export const plots = [
       "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1200&q=80",
     ],
     badges: ["UPI/document birategerejwe", "Gusura weekend"],
+    tags: ["Umudugudu urimo gutera imbere", "Aho gutwara imodoka", "Hafi y'isoko"],
   },
   {
     id: "rwamagana-commercial-18m",
@@ -54,6 +56,7 @@ export const plots = [
       "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80",
     ],
     badges: ["Aho kiri hemejwe", "Umuhanda uri hafi"],
+    tags: ["Umuhanda uri hafi", "Byiza ku bucuruzi", "Amashanyarazi arahari", "Ahantu hafunguye"],
   },
 ];
 

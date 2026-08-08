@@ -28,6 +28,7 @@ export class SellersService {
         status: "pending_review",
         accessNotes: input.accessNotes,
         internalNotes: input.sellerNotes,
+        tags: input.tags ?? [],
         sellerId: seller.id,
         images: { create: input.photoUrls.map((url) => ({ url, alt: `Ikibanza ${input.sector}` })) },
       },

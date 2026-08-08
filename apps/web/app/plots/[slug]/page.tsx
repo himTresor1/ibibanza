@@ -1,4 +1,4 @@
-import { Badge, Button } from "@ibibanza/ui";
+import { Badge, Button, Chip } from "@ibibanza/ui";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { RiMapPin2Line, RiShieldCheckLine, RiSparkling2Line } from "@remixicon/react";
@@ -66,6 +66,21 @@ export default async function PlotDetailPage({ params }: { params: Promise<{ slu
                 kandi igategura gusura mbere y&apos;uko ibiganiro byo kugura bikomeza hanze ya platform.
               </p>
             </section>
+
+            {plot.tags.length > 0 ? (
+              <section className="border-b border-[var(--stroke-soft-200)] pb-8">
+                <h2 className="text-xl font-semibold text-[var(--text-strong-950)]">
+                  Ibindi bijyanye n&apos;iki kibanza
+                </h2>
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {plot.tags.map((tag) => (
+                    <Chip key={tag} className="cursor-default">
+                      {tag}
+                    </Chip>
+                  ))}
+                </div>
+              </section>
+            ) : null}
 
             <section className="border-b border-[var(--stroke-soft-200)] pb-8">
               <h2 className="flex items-center gap-2 text-xl font-semibold text-[var(--text-strong-950)]">
