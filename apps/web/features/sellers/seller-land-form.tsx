@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, Card, FormField, Input, Select, Textarea, cn } from "@ibibanza/ui";
+import { Button, FormField, Input, Select, Textarea, cn } from "@ibibanza/ui";
 import { useEffect, useRef, useState, type ChangeEvent, type FormEvent } from "react";
 import { postJson } from "../../lib/api-client";
 
@@ -137,11 +137,11 @@ export function SellerLandForm() {
   }
 
   return (
-    <Card>
-      <div className="mb-6">
+    <div className="space-y-8">
+      <div>
         <StepProgress current={step} />
       </div>
-      <form ref={formRef} onSubmit={onSubmit} className="grid gap-4">
+      <form ref={formRef} onSubmit={onSubmit} className="grid gap-6">
         {step === 1 ? (
           <>
             <div>
@@ -267,6 +267,6 @@ export function SellerLandForm() {
           </p>
         ) : null}
       </form>
-    </Card>
+    </div>
   );
 }

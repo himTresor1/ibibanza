@@ -11,9 +11,9 @@ export const inputVariants = tv({
   ],
   variants: {
     size: {
-      medium: "h-10 px-3 text-sm",
-      small: "h-9 px-2.5 text-sm",
-      xsmall: "h-8 px-2 text-sm",
+      medium: "h-12 px-3.5 text-sm",
+      small: "h-11 px-3 text-sm",
+      xsmall: "h-10 px-2.5 text-sm",
     },
     hasError: {
       true: "border-[var(--danger)] focus:border-[var(--danger)] focus:ring-[var(--red-alpha-10)]",

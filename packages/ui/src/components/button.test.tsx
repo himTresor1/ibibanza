@@ -11,7 +11,7 @@ describe("Button", () => {
 
   it("supports a large size for hero CTAs", () => {
     render(<Button data-testid="btn" size="large">Shaka ibibanza</Button>);
-    expect(screen.getByTestId("btn")).toHaveClass("h-14", "rounded-full");
+    expect(screen.getByTestId("btn")).toHaveClass("h-16", "rounded-full");
   });
 
   it("defaults to the filled green brand style", () => {

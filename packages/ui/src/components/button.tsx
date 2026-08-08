@@ -5,7 +5,7 @@ import { cn } from "../lib/cn";
 
 export const buttonVariants = tv({
   base: [
-    "group relative inline-flex items-center justify-center whitespace-nowrap outline-none",
+    "group relative inline-flex w-fit items-center justify-center overflow-hidden text-ellipsis whitespace-nowrap outline-none",
     "transition duration-200 ease-out disabled:pointer-events-none disabled:bg-[var(--bg-weak-50)] disabled:text-[var(--text-disabled-300)]",
   ],
   variants: {
@@ -21,10 +21,10 @@ export const buttonVariants = tv({
       ghost: "ring-1 ring-inset",
     },
     size: {
-      large: "h-14 gap-3 rounded-full px-8 text-base font-semibold",
-      medium: "h-10 gap-3 rounded-full px-5 text-sm font-semibold",
-      small: "h-9 gap-3 rounded-full px-4 text-sm font-semibold",
-      xsmall: "h-8 gap-2.5 rounded-full px-3 text-sm font-semibold",
+      large: "h-16 gap-3 rounded-full px-6 text-base font-semibold",
+      medium: "h-12 gap-2.5 rounded-full px-4 text-sm font-semibold",
+      small: "h-11 gap-2 rounded-full px-3.5 text-sm font-semibold",
+      xsmall: "h-10 gap-2 rounded-full px-3 text-sm font-semibold",
     },
   },
   compoundVariants: [
