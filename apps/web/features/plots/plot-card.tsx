@@ -21,7 +21,7 @@ interface PlotCardProps {
 
 export function PlotCard({ plot }: PlotCardProps) {
   return (
-    <Card className="group overflow-hidden p-0 transition duration-200 hover:-translate-y-0.5 hover:shadow-[0_10px_24px_rgba(14,18,27,0.08)]">
+    <Card className="group overflow-hidden p-0 transition duration-200 hover:-translate-y-0.5 hover:shadow-[var(--shadow-card-hover)]">
       <div className="relative">
         <div
           aria-label={`Amafoto ya ${plot.title}`}
@@ -39,13 +39,13 @@ export function PlotCard({ plot }: PlotCardProps) {
             </div>
           ))}
         </div>
-        <span className="absolute bottom-2 left-2 rounded-md bg-black/65 px-1.5 py-1 text-[11px] font-semibold text-white">
+        <span className="absolute bottom-2 left-2 rounded-full bg-black/65 px-1.5 py-1 text-[11px] font-semibold text-white">
           Amafoto {plot.imageUrls.length}
         </span>
         <Link
           href={`/plots/${plot.slug}`}
           aria-label={`Fungura ${plot.title}`}
-          className="absolute right-2 top-2 inline-flex size-11 items-center justify-center rounded-full bg-white text-[var(--text-strong-950)] shadow-[0_2px_10px_rgba(14,18,27,0.16)] transition hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--primary-base)]"
+          className="absolute right-2 top-2 inline-flex size-11 items-center justify-center rounded-full bg-white text-[var(--text-strong-950)] shadow-[var(--shadow-card)] transition hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--primary-base)]"
         >
           <RiArrowRightLine className="size-5" />
         </Link>
