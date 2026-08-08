@@ -1,4 +1,5 @@
 export { Badge } from "./components/badge";
+export { Chip } from "./components/chip";
 export { Button, Icon as ButtonIcon, Root as ButtonRoot, buttonVariants } from "./components/button";
 export { Card } from "./components/card";
 export { Checkbox } from "./components/checkbox";
