@@ -4,6 +4,7 @@ import Image from "next/image";
 import { RiAddLine, RiArrowRightLine, RiPhoneLine, RiWhatsappLine } from "@remixicon/react";
 import { PlotCard } from "../features/plots/plot-card";
 import { PlotSearchForm } from "../features/plots/plot-search-form";
+import { LandUseFilterChips } from "../features/plots/land-use-filter-chips";
 import { plots, platformPhone } from "../lib/mock-data";
 
 export default function HomePage() {
@@ -18,7 +19,7 @@ export default function HomePage() {
             <Link
               href="/alerts"
               aria-label="Akira alerts kuri WhatsApp"
-              className="inline-flex min-h-11 items-center gap-2 rounded-lg px-3 text-sm font-semibold text-[var(--text-sub-600)] transition hover:bg-[var(--bg-soft-100)] hover:text-[var(--text-strong-950)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--primary-base)]"
+              className="inline-flex min-h-11 items-center gap-2 rounded-xl px-3 text-sm font-semibold text-[var(--text-sub-600)] transition hover:bg-[var(--bg-soft-100)] hover:text-[var(--text-strong-950)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--primary-base)]"
             >
               <RiWhatsappLine className="size-5 text-[var(--primary-base)]" />
               <span className="hidden sm:inline">WhatsApp alerts</span>
@@ -26,7 +27,7 @@ export default function HomePage() {
             <Link
               href="/submit-land"
               aria-label="Ohereza ikibanza"
-              className="inline-flex min-h-11 items-center gap-2 rounded-lg px-3 text-sm font-semibold text-[var(--text-sub-600)] transition hover:bg-[var(--bg-soft-100)] hover:text-[var(--text-strong-950)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--primary-base)]"
+              className="inline-flex min-h-11 items-center gap-2 rounded-xl px-3 text-sm font-semibold text-[var(--text-sub-600)] transition hover:bg-[var(--bg-soft-100)] hover:text-[var(--text-strong-950)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--primary-base)]"
             >
               <RiAddLine className="size-5" />
               <span className="hidden sm:inline">Ohereza ikibanza</span>
@@ -41,6 +42,9 @@ export default function HomePage() {
         </nav>
         <div className="mt-6 sm:mt-8">
           <PlotSearchForm />
+          <div className="mt-4">
+            <LandUseFilterChips search={{}} />
+          </div>
         </div>
         <div className="mt-4 grid overflow-hidden rounded-2xl bg-[var(--bg-strong-950)] text-white md:grid-cols-[1fr_0.9fr]">
           <div className="flex min-h-72 flex-col justify-center px-5 py-10 sm:px-8 lg:px-12">
@@ -53,7 +57,7 @@ export default function HomePage() {
             </p>
             <Link
               href="#ibibanza-biri-ku-isoko"
-              className="mt-6 inline-flex min-h-11 w-fit items-center gap-2 rounded-lg bg-white px-4 text-sm font-semibold text-[var(--text-strong-950)] transition hover:bg-[var(--bg-soft-100)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+              className="mt-6 inline-flex min-h-11 w-fit items-center gap-2 rounded-xl bg-white px-4 text-sm font-semibold text-[var(--text-strong-950)] transition hover:bg-[var(--bg-soft-100)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
             >
               Reba ibibanza
               <RiArrowRightLine className="size-4" />
