@@ -1,6 +1,7 @@
-import { Card } from "@ibibanza/ui";
+import { Button, Card } from "@ibibanza/ui";
 import Link from "next/link";
 import { BackLink } from "../../features/navigation/back-link";
+import { LandUseFilterChips } from "../../features/plots/land-use-filter-chips";
 import { PlotCard } from "../../features/plots/plot-card";
 import { PlotSearchForm } from "../../features/plots/plot-search-form";
 import { plots } from "../../lib/mock-data";
@@ -24,6 +25,9 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
         </div>
         <div className="mt-5">
           <PlotSearchForm initialSearch={search} />
+          <div className="mt-4">
+            <LandUseFilterChips search={search} />
+          </div>
         </div>
 
         {matchingPlots.length ? (
@@ -37,13 +41,11 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
             <p className="mt-2 max-w-md leading-7 text-[var(--text-sub-600)]">
               Ohereza ibyo ushaka kuri WhatsApp alerts. Tuzakumenyesha igihe ikibanza gihuye na byo kibonetse.
             </p>
-            <Link
-              href="/alerts"
-              aria-label="Akira alerts kuri WhatsApp"
-              className="mt-5 inline-flex min-h-11 items-center rounded-lg bg-[var(--primary-base)] px-4 text-sm font-semibold text-white transition hover:bg-[var(--primary-darker)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--primary-base)]"
-            >
-              Akira alerts kuri WhatsApp
-            </Link>
+            <Button asChild className="mt-5 w-fit">
+              <Link href="/alerts" aria-label="Akira alerts kuri WhatsApp">
+                Akira alerts kuri WhatsApp
+              </Link>
+            </Button>
           </Card>
         )}
       </div>
