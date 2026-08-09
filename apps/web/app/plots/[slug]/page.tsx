@@ -5,11 +5,12 @@ import { RiMapPin2Line, RiShieldCheckLine, RiSparkling2Line } from "@remixicon/r
 import { BuyerInterestForm } from "../../../features/leads/buyer-interest-form";
 import { BackLink } from "../../../features/navigation/back-link";
 import { PlotGallery } from "../../../features/plots/plot-gallery";
-import { formatRwf, plots } from "../../../lib/mock-data";
+import { formatRwf } from "../../../lib/mock-data";
+import { fetchPlotBySlug } from "../../../lib/plots-api";
 
 export default async function PlotDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const plot = plots.find((item) => item.slug === slug);
+  const plot = await fetchPlotBySlug(slug);
   if (!plot) notFound();
 
   return (

@@ -7,6 +7,10 @@ vi.mock("next/navigation", () => ({
   useRouter: () => ({ push: vi.fn() }),
 }));
 
+vi.mock("../../lib/plots-api", () => ({
+  fetchPlots: vi.fn().mockResolvedValue([]),
+}));
+
 describe("SearchPage", () => {
   it("offers WhatsApp alerts when there are no matching plots", async () => {
     render(await SearchPage({ searchParams: Promise.resolve({ location: "Musanze" }) }));

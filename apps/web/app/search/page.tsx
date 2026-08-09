@@ -4,8 +4,8 @@ import { BackLink } from "../../features/navigation/back-link";
 import { LandUseFilterChips } from "../../features/plots/land-use-filter-chips";
 import { PlotCard } from "../../features/plots/plot-card";
 import { PlotSearchForm } from "../../features/plots/plot-search-form";
-import { plots } from "../../lib/mock-data";
-import { filterPlots, parsePlotSearch } from "../../lib/plot-search";
+import { fetchPlots } from "../../lib/plots-api";
+import { parsePlotSearch } from "../../lib/plot-search";
 
 interface SearchPageProps {
   searchParams: Promise<Record<string, string | string[] | undefined>>;
@@ -13,7 +13,7 @@ interface SearchPageProps {
 
 export default async function SearchPage({ searchParams }: SearchPageProps) {
   const search = parsePlotSearch(await searchParams);
-  const matchingPlots = filterPlots(plots, search);
+  const matchingPlots = await fetchPlots(search);
 
   return (
     <main className="min-h-screen bg-[var(--background)] px-4 py-4 sm:py-7">

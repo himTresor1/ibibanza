@@ -4,9 +4,14 @@ import Image from "next/image";
 import { PlotCard } from "../features/plots/plot-card";
 import { PlotSearchForm } from "../features/plots/plot-search-form";
 import { LandUseFilterChips } from "../features/plots/land-use-filter-chips";
-import { plots } from "../lib/mock-data";
+import { fetchPlots } from "../lib/plots-api";
 
-export default function HomePage() {
+const FALLBACK_HERO_IMAGE = "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee";
+
+export default async function HomePage() {
+  const plots = await fetchPlots();
+  const heroImage = plots[0]?.imageUrls[1] ?? plots[0]?.imageUrls[0] ?? FALLBACK_HERO_IMAGE;
+
   return (
     <main className="min-h-screen bg-[var(--background)] text-[var(--foreground)]">
       <header className="bg-white">
@@ -39,7 +44,7 @@ export default function HomePage() {
           fill
           priority
           sizes="100vw"
-          src={plots[0].imageUrls[1]}
+          src={heroImage}
           alt="Ubutaka buri hafi y'umuhanda mu Rwanda"
           className="object-cover"
         />
