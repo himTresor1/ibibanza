@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --port 3000",
-    "build": "next build",
-    "start": "next start --port 3000",
+    "dev": "node init && next dev --port 3000",
+    "build": "node init && next build",
+    "start": "node init && next start --port 3000",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "test": "vitest run"
@@ -15,6 +15,7 @@
     "@ibibanza/shared": "file:../../packages/shared",
     "@ibibanza/ui": "file:../../packages/ui",
     "@remixicon/react": "^4.9.0",
+    "@supabase/supabase-js": "^2.112.2",
     "@tailwindcss/postcss": "^4.0.0",
     "lucide-react": "^1.29.0",
     "next": "16.2.6",
@@ -24,11 +25,11 @@
     "tailwindcss": "^4.0.0"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^6.0.0",
+    "@testing-library/react": "^16.0.0",
     "@types/node": "^20.0.0",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
-    "@testing-library/jest-dom": "^6.0.0",
-    "@testing-library/react": "^16.0.0",
     "@vitejs/plugin-react": "^5.0.0",
     "eslint": "^9.0.0",
     "eslint-config-next": "16.2.6",

@@ -3,6 +3,7 @@
 import { Button, FormField, Input, Select, Textarea, cn } from "@ibibanza/ui";
 import { useEffect, useRef, useState, type ChangeEvent, type FormEvent } from "react";
 import { postJson } from "../../lib/api-client";
+import { PhotoUploadField, type UploadedMedia } from "./photo-upload-field";
 
 interface SellerFormValues {
   sellerName: string;
@@ -15,7 +16,6 @@ interface SellerFormValues {
   sizeSqm: string;
   landUse: string;
   tags: string;
-  photoUrls: string;
   accessNotes: string;
   sellerNotes: string;
 }
@@ -31,7 +31,6 @@ const initialValues: SellerFormValues = {
   sizeSqm: "",
   landUse: "residential",
   tags: "",
-  photoUrls: "",
   accessNotes: "",
   sellerNotes: "",
 };
@@ -89,7 +88,9 @@ function StepProgress({ current }: { current: number }) {
 export function SellerLandForm() {
   const [step, setStep] = useState(1);
   const [values, setValues] = useState<SellerFormValues>(initialValues);
+  const [media, setMedia] = useState<UploadedMedia[]>([]);
   const [status, setStatus] = useState("");
+  const [mediaError, setMediaError] = useState("");
   const formRef = useRef<HTMLFormElement>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
 
@@ -119,6 +120,18 @@ export function SellerLandForm() {
     if (step < 3) {
       return;
     }
+
+    if (media.some((item) => item.status === "uploading")) {
+      setMediaError("Tegereza amafoto yose arangize kohereza.");
+      return;
+    }
+    const photoUrls = media.filter((item) => item.status === "done" && item.url).map((item) => item.url as string);
+    if (photoUrls.length === 0) {
+      setMediaError("Ohereza nibura ifoto imwe y'ikibanza.");
+      return;
+    }
+    setMediaError("");
+
     setStatus("Kohereza...");
     try {
       await postJson("/seller-submissions", {
@@ -131,7 +144,7 @@ export function SellerLandForm() {
         priceRwf: Number(values.priceRwf),
         sizeSqm: Number(values.sizeSqm),
         landUse: values.landUse,
-        photoUrls: values.photoUrls.split("\n").map((item) => item.trim()).filter(Boolean),
+        photoUrls,
         accessNotes: values.accessNotes,
         sellerNotes: values.sellerNotes,
         tags: values.tags.split(",").map((item) => item.trim()).filter(Boolean),
@@ -248,14 +261,9 @@ export function SellerLandForm() {
               Amafoto n&apos;ibisobanuro
             </h2>
             <FormField id="photoUrls" label="Amafoto">
-              <Textarea
-                name="photoUrls"
-                placeholder="https://example.com/photo.jpg"
-                value={values.photoUrls}
-                onChange={update("photoUrls")}
-                required
-              />
+              <PhotoUploadField media={media} onChange={setMedia} />
             </FormField>
+            {mediaError ? <p className="text-sm text-[var(--danger)]">{mediaError}</p> : null}
             <FormField id="accessNotes" label="Umuhanda n'ibindi">
               <Textarea name="accessNotes" value={values.accessNotes} onChange={update("accessNotes")} />
             </FormField>
