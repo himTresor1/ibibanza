@@ -7,6 +7,8 @@ export interface Plot {
   title: string;
   district: string;
   sector: string;
+  cell: string;
+  village: string;
   priceRwf: number;
   sizeSqm: number;
   landUse: string;
@@ -36,6 +38,8 @@ interface ApiPlot {
   title: string;
   district: string;
   sector: string;
+  cell: string;
+  village: string;
   priceRwf: number;
   sizeSqm: number;
   landUse: string;
@@ -61,6 +65,8 @@ function mapPlot(apiPlot: ApiPlot): Plot {
     title: apiPlot.title,
     district: apiPlot.district,
     sector: apiPlot.sector,
+    cell: apiPlot.cell,
+    village: apiPlot.village,
     priceRwf: apiPlot.priceRwf,
     sizeSqm: apiPlot.sizeSqm,
     landUse: LAND_USE_TO_KINYARWANDA[apiPlot.landUse] ?? apiPlot.landUse,
@@ -74,6 +80,7 @@ function mapPlot(apiPlot: ApiPlot): Plot {
 export async function fetchPlots(search?: Partial<PlotSearch>): Promise<Plot[]> {
   const params = new URLSearchParams();
   if (search?.location) params.set("location", search.location);
+  if (search?.minPrice) params.set("minPrice", String(search.minPrice));
   if (search?.maxPrice) params.set("maxPrice", String(search.maxPrice));
   if (search?.landUse) {
     const enumValue = LAND_USE_TO_ENUM[search.landUse];

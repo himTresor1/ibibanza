@@ -26,4 +26,20 @@ describe("plot search", () => {
       }),
     ).toBe("/search?location=Kanombe&maxPrice=40000000&landUse=Guturwamo");
   });
+
+  it("includes a minimum price in the shareable URL when set", () => {
+    expect(
+      buildPlotSearchHref({
+        location: "Kanombe",
+        minPrice: 10000000,
+        maxPrice: 40000000,
+        landUse: "Guturwamo",
+      }),
+    ).toBe("/search?location=Kanombe&minPrice=10000000&maxPrice=40000000&landUse=Guturwamo");
+  });
+
+  it("filters plots below a minimum price out of range", () => {
+    const search = parsePlotSearch({ minPrice: "20000000" });
+    expect(filterPlots(plots, search).map((plot) => plot.slug)).not.toContain("bugesera-nyamata-12m");
+  });
 });

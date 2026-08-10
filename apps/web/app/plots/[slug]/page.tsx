@@ -24,7 +24,7 @@ export default async function PlotDetailPage({ params }: { params: Promise<{ slu
             <h1 className="mt-1 max-w-3xl text-3xl font-semibold leading-tight text-[var(--text-strong-950)] sm:text-5xl">{plot.title}</h1>
             <p className="mt-3 flex items-center gap-2 text-sm font-medium text-[var(--text-sub-600)] sm:text-base">
               <RiMapPin2Line className="size-5 text-[var(--primary-base)]" />
-              {plot.sector}, {plot.district}
+              {plot.village}, {plot.cell}, {plot.sector}, {plot.district}
             </p>
           </div>
         </header>
@@ -45,7 +45,7 @@ export default async function PlotDetailPage({ params }: { params: Promise<{ slu
                 <p className="mt-1 text-base font-bold text-[var(--text-strong-950)]">{plot.sizeSqm} sqm</p>
               </div>
               <div className="border-r border-[var(--stroke-soft-200)] px-3 py-4 sm:border-r">
-                <p className="text-xs font-medium text-[var(--text-soft-400)]">Icyiciro</p>
+                <p className="text-xs font-medium text-[var(--text-soft-400)]">Zoning</p>
                 <p className="mt-1 text-base font-bold text-[var(--text-strong-950)]">{plot.landUse}</p>
               </div>
               <div className="px-3 py-4">

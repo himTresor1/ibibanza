@@ -7,6 +7,8 @@ export const SellerSubmissionSchema = z.object({
   sellerPhone: RwandaPhoneSchema,
   district: NonEmptyStringSchema,
   sector: NonEmptyStringSchema,
+  cell: NonEmptyStringSchema,
+  village: NonEmptyStringSchema,
   priceRwf: PositiveMoneySchema,
   sizeSqm: PositiveSizeSchema,
   landUse: z.enum(LandUse),

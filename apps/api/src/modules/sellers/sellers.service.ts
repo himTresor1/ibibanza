@@ -22,6 +22,8 @@ export class SellersService {
         title: `Ikibanza ${input.sector}, ${input.district}`,
         district: input.district,
         sector: input.sector,
+        cell: input.cell,
+        village: input.village,
         priceRwf: input.priceRwf,
         sizeSqm: input.sizeSqm,
         landUse: input.landUse,

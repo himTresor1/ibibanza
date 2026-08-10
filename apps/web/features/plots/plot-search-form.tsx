@@ -10,20 +10,26 @@ interface PlotSearchFormProps {
   initialSearch?: Partial<PlotSearch>;
 }
 
+function parseAmount(value: string) {
+  const numeric = Number(value.replace(/[^\d]/g, ""));
+  return Number.isFinite(numeric) && numeric > 0 ? numeric : undefined;
+}
+
 export function PlotSearchForm({ initialSearch }: PlotSearchFormProps) {
   const router = useRouter();
   const [location, setLocation] = useState(initialSearch?.location ?? "");
+  const [minPrice, setMinPrice] = useState(initialSearch?.minPrice ? String(initialSearch.minPrice) : "");
   const [maxPrice, setMaxPrice] = useState(initialSearch?.maxPrice ? String(initialSearch.maxPrice) : "");
   const [landUse, setLandUse] = useState(initialSearch?.landUse ?? "");
 
   function submitSearch(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const numericPrice = Number(maxPrice.replace(/[^\d]/g, ""));
 
     router.push(
       buildPlotSearchHref({
         location: location.trim(),
-        maxPrice: Number.isFinite(numericPrice) && numericPrice > 0 ? numericPrice : undefined,
+        minPrice: parseAmount(minPrice),
+        maxPrice: parseAmount(maxPrice),
         landUse,
       }),
     );
@@ -44,31 +50,43 @@ export function PlotSearchForm({ initialSearch }: PlotSearchFormProps) {
             id="search-location"
             value={location}
             onChange={(event) => setLocation(event.target.value)}
-            placeholder="Nyamata, Kanombe..."
+            placeholder="Akarere, Umurenge, Akagari cyangwa Umudugudu"
           />
         </div>
         <div className="min-w-0 flex-1">
-          <label htmlFor="search-budget" className="mb-1.5 block text-xs font-semibold text-[var(--text-strong-950)]">
-            Budget yawe
+          <label htmlFor="search-min-price" className="mb-1.5 block text-xs font-semibold text-[var(--text-strong-950)]">
+            Guhera kuri (RWF)
           </label>
           <Input
-            id="search-budget"
+            id="search-min-price"
+            value={minPrice}
+            onChange={(event) => setMinPrice(event.target.value)}
+            inputMode="numeric"
+            placeholder="500,000"
+          />
+        </div>
+        <div className="min-w-0 flex-1">
+          <label htmlFor="search-max-price" className="mb-1.5 block text-xs font-semibold text-[var(--text-strong-950)]">
+            Kugeza kuri (RWF)
+          </label>
+          <Input
+            id="search-max-price"
             value={maxPrice}
             onChange={(event) => setMaxPrice(event.target.value)}
             inputMode="numeric"
-            placeholder="Urugero: 20,000,000"
+            placeholder="20,000,000"
           />
         </div>
         <div className="min-w-0 flex-1">
           <label htmlFor="search-land-use" className="mb-1.5 block text-xs font-semibold text-[var(--text-strong-950)]">
-            Icyiciro
+            Zoning
           </label>
           <Select
             id="search-land-use"
             value={landUse}
             onChange={(event) => setLandUse(event.target.value)}
           >
-            <option value="">Ibyiciro byose</option>
+            <option value="">Byose</option>
             {LAND_USE_OPTIONS.map((option) => <option key={option} value={option}>{option}</option>)}
           </Select>
         </div>

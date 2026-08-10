@@ -6,6 +6,8 @@ export const CreatePlotSchema = z.object({
   title: NonEmptyStringSchema,
   district: NonEmptyStringSchema,
   sector: NonEmptyStringSchema,
+  cell: NonEmptyStringSchema,
+  village: NonEmptyStringSchema,
   priceRwf: PositiveMoneySchema,
   sizeSqm: PositiveSizeSchema,
   landUse: z.enum(LandUse),

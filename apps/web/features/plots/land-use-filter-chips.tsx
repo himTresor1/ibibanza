@@ -7,16 +7,16 @@ interface LandUseFilterChipsProps {
 }
 
 export function LandUseFilterChips({ search }: LandUseFilterChipsProps) {
-  const base = { location: search.location ?? "", maxPrice: search.maxPrice };
+  const base = { location: search.location ?? "", minPrice: search.minPrice, maxPrice: search.maxPrice };
 
   return (
     <div
       role="group"
-      aria-label="Hitamo icyiciro"
+      aria-label="Hitamo zoning"
       className="flex gap-2 overflow-x-auto pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
     >
       <Link href={buildPlotSearchHref({ ...base, landUse: "" })}>
-        <Chip selected={!search.landUse}>Ibyiciro byose</Chip>
+        <Chip selected={!search.landUse}>Byose</Chip>
       </Link>
       {LAND_USE_OPTIONS.map((option) => (
         <Link key={option} href={buildPlotSearchHref({ ...base, landUse: option })}>

@@ -37,30 +37,30 @@ function tagsFor(index: number) {
 
 const PLOTS = [
   // Kigali
-  { slug: "kigali-kanombe-35m", title: "Ikibanza cyo guturamo i Kanombe", district: "Kigali", sector: "Kanombe", priceRwf: 35_000_000, sizeSqm: 420, landUse: "residential", status: "published", remainingCount: 4 },
-  { slug: "kigali-kimironko-42m", title: "Ikibanza i Kimironko hafi y'isoko", district: "Kigali", sector: "Kimironko", priceRwf: 42_000_000, sizeSqm: 350, landUse: "residential", status: "published", remainingCount: 2 },
-  { slug: "kigali-nyarutarama-65m", title: "Ikibanza cyo hejuru i Nyarutarama", district: "Kigali", sector: "Nyarutarama", priceRwf: 65_000_000, sizeSqm: 500, landUse: "residential", status: "published", remainingCount: 1 },
-  { slug: "kigali-kacyiru-80m", title: "Ikibanza cy'ubucuruzi i Kacyiru", district: "Kigali", sector: "Kacyiru", priceRwf: 80_000_000, sizeSqm: 600, landUse: "commercial", status: "published", remainingCount: 1 },
-  { slug: "kigali-gikondo-55m", title: "Ikibanza cy'ubucuruzi i Gikondo", district: "Kigali", sector: "Gikondo", priceRwf: 55_000_000, sizeSqm: 450, landUse: "commercial", status: "reserved", remainingCount: 0 },
-  { slug: "kigali-nyamirambo-28m", title: "Ikibanza cyo guturamo i Nyamirambo", district: "Kigali", sector: "Nyamirambo", priceRwf: 28_000_000, sizeSqm: 300, landUse: "residential", status: "published", remainingCount: 3 },
-  { slug: "kigali-kabeza-38m", title: "Ikibanza kivanze i Kabeza", district: "Kigali", sector: "Kabeza", priceRwf: 38_000_000, sizeSqm: 380, landUse: "mixed", status: "pending_review", remainingCount: 2 },
+  { slug: "kigali-kanombe-35m", title: "Ikibanza cyo guturamo i Kanombe", district: "Kigali", sector: "Kanombe", cell: "Nyarugunga", village: "Karembure", priceRwf: 35_000_000, sizeSqm: 420, landUse: "residential", status: "published", remainingCount: 4 },
+  { slug: "kigali-kimironko-42m", title: "Ikibanza i Kimironko hafi y'isoko", district: "Kigali", sector: "Kimironko", cell: "Bibare", village: "Kibagabaga", priceRwf: 42_000_000, sizeSqm: 350, landUse: "residential", status: "published", remainingCount: 2 },
+  { slug: "kigali-nyarutarama-65m", title: "Ikibanza cyo hejuru i Nyarutarama", district: "Kigali", sector: "Nyarutarama", cell: "Nyarutarama", village: "Ingabo", priceRwf: 65_000_000, sizeSqm: 500, landUse: "residential", status: "published", remainingCount: 1 },
+  { slug: "kigali-kacyiru-80m", title: "Ikibanza cy'ubucuruzi i Kacyiru", district: "Kigali", sector: "Kacyiru", cell: "Kamatamu", village: "Kacyiru I", priceRwf: 80_000_000, sizeSqm: 600, landUse: "commercial", status: "published", remainingCount: 1 },
+  { slug: "kigali-gikondo-55m", title: "Ikibanza cy'ubucuruzi i Gikondo", district: "Kigali", sector: "Gikondo", cell: "Kigarama", village: "Gasharu", priceRwf: 55_000_000, sizeSqm: 450, landUse: "commercial", status: "reserved", remainingCount: 0 },
+  { slug: "kigali-nyamirambo-28m", title: "Ikibanza cyo guturamo i Nyamirambo", district: "Kigali", sector: "Nyamirambo", cell: "Rugarama", village: "Nyamirambo I", priceRwf: 28_000_000, sizeSqm: 300, landUse: "residential", status: "published", remainingCount: 3 },
+  { slug: "kigali-kabeza-38m", title: "Ikibanza kivanze i Kabeza", district: "Kigali", sector: "Kabeza", cell: "Kabeza", village: "Karama", priceRwf: 38_000_000, sizeSqm: 380, landUse: "mixed", status: "pending_review", remainingCount: 2 },
 
   // Bugesera
-  { slug: "bugesera-nyamata-12m", title: "Ikibanza i Nyamata hafi y'umuhanda", district: "Bugesera", sector: "Nyamata", priceRwf: 12_000_000, sizeSqm: 300, landUse: "residential", status: "published", remainingCount: 8 },
-  { slug: "bugesera-ruhuha-8m", title: "Ikibanza cy'ubuhinzi i Ruhuha", district: "Bugesera", sector: "Ruhuha", priceRwf: 8_000_000, sizeSqm: 800, landUse: "farming", status: "published", remainingCount: 6 },
-  { slug: "bugesera-ntarama-15m", title: "Ikibanza cyo guturamo i Ntarama", district: "Bugesera", sector: "Ntarama", priceRwf: 15_000_000, sizeSqm: 350, landUse: "residential", status: "published", remainingCount: 5 },
-  { slug: "bugesera-rilima-6m", title: "Ikibanza cy'ubuhinzi i Rilima", district: "Bugesera", sector: "Rilima", priceRwf: 6_500_000, sizeSqm: 1000, landUse: "farming", status: "published", remainingCount: 10 },
-  { slug: "bugesera-mayange-5m", title: "Ikibanza cy'ubuhinzi i Mayange", district: "Bugesera", sector: "Mayange", priceRwf: 5_000_000, sizeSqm: 1200, landUse: "farming", status: "pending_review", remainingCount: 4 },
-  { slug: "bugesera-nyamata-22m", title: "Ikibanza cy'ubucuruzi i Nyamata", district: "Bugesera", sector: "Nyamata", priceRwf: 22_000_000, sizeSqm: 400, landUse: "commercial", status: "published", remainingCount: 2 },
-  { slug: "bugesera-ruhuha-10m", title: "Ikibanza cyo guturamo i Ruhuha", district: "Bugesera", sector: "Ruhuha", priceRwf: 10_000_000, sizeSqm: 320, landUse: "residential", status: "reserved", remainingCount: 0 },
+  { slug: "bugesera-nyamata-12m", title: "Ikibanza i Nyamata hafi y'umuhanda", district: "Bugesera", sector: "Nyamata", cell: "Rilima", village: "Kayenzi", priceRwf: 12_000_000, sizeSqm: 300, landUse: "residential", status: "published", remainingCount: 8 },
+  { slug: "bugesera-ruhuha-8m", title: "Ikibanza cy'ubuhinzi i Ruhuha", district: "Bugesera", sector: "Ruhuha", cell: "Nyarurama", village: "Gitanga", priceRwf: 8_000_000, sizeSqm: 800, landUse: "farming", status: "published", remainingCount: 6 },
+  { slug: "bugesera-ntarama-15m", title: "Ikibanza cyo guturamo i Ntarama", district: "Bugesera", sector: "Ntarama", cell: "Cyugaro", village: "Kanzenze", priceRwf: 15_000_000, sizeSqm: 350, landUse: "residential", status: "published", remainingCount: 5 },
+  { slug: "bugesera-rilima-6m", title: "Ikibanza cy'ubuhinzi i Rilima", district: "Bugesera", sector: "Rilima", cell: "Kindama", village: "Rilima I", priceRwf: 6_500_000, sizeSqm: 1000, landUse: "farming", status: "published", remainingCount: 10 },
+  { slug: "bugesera-mayange-5m", title: "Ikibanza cy'ubuhinzi i Mayange", district: "Bugesera", sector: "Mayange", cell: "Gakoni", village: "Mayange I", priceRwf: 5_000_000, sizeSqm: 1200, landUse: "farming", status: "pending_review", remainingCount: 4 },
+  { slug: "bugesera-nyamata-22m", title: "Ikibanza cy'ubucuruzi i Nyamata", district: "Bugesera", sector: "Nyamata", cell: "Nyamata", village: "Nyamata Centre", priceRwf: 22_000_000, sizeSqm: 400, landUse: "commercial", status: "published", remainingCount: 2 },
+  { slug: "bugesera-ruhuha-10m", title: "Ikibanza cyo guturamo i Ruhuha", district: "Bugesera", sector: "Ruhuha", cell: "Ruhuha", village: "Rwintare", priceRwf: 10_000_000, sizeSqm: 320, landUse: "residential", status: "reserved", remainingCount: 0 },
 
   // Muhanga
-  { slug: "muhanga-town-45m", title: "Ikibanza cy'ubucuruzi mu mujyi wa Muhanga", district: "Muhanga", sector: "Muhanga", priceRwf: 45_000_000, sizeSqm: 500, landUse: "commercial", status: "published", remainingCount: 2 },
-  { slug: "muhanga-nyamabuye-18m", title: "Ikibanza cyo guturamo i Nyamabuye", district: "Muhanga", sector: "Nyamabuye", priceRwf: 18_000_000, sizeSqm: 350, landUse: "residential", status: "published", remainingCount: 4 },
-  { slug: "muhanga-kiyumba-7m", title: "Ikibanza cy'ubuhinzi i Kiyumba", district: "Muhanga", sector: "Kiyumba", priceRwf: 7_000_000, sizeSqm: 900, landUse: "farming", status: "published", remainingCount: 7 },
-  { slug: "muhanga-shyogwe-14m", title: "Ikibanza cyo guturamo i Shyogwe", district: "Muhanga", sector: "Shyogwe", priceRwf: 14_000_000, sizeSqm: 300, landUse: "residential", status: "published", remainingCount: 3 },
-  { slug: "muhanga-cyeza-6m", title: "Ikibanza cy'ubuhinzi i Cyeza", district: "Muhanga", sector: "Cyeza", priceRwf: 6_000_000, sizeSqm: 1100, landUse: "farming", status: "published", remainingCount: 9 },
-  { slug: "muhanga-town-25m", title: "Ikibanza kivanze mu mujyi wa Muhanga", district: "Muhanga", sector: "Muhanga", priceRwf: 25_000_000, sizeSqm: 420, landUse: "mixed", status: "pending_review", remainingCount: 3 },
+  { slug: "muhanga-town-45m", title: "Ikibanza cy'ubucuruzi mu mujyi wa Muhanga", district: "Muhanga", sector: "Muhanga", cell: "Kabgayi", village: "Muhanga I", priceRwf: 45_000_000, sizeSqm: 500, landUse: "commercial", status: "published", remainingCount: 2 },
+  { slug: "muhanga-nyamabuye-18m", title: "Ikibanza cyo guturamo i Nyamabuye", district: "Muhanga", sector: "Nyamabuye", cell: "Nyamabuye", village: "Gahogo", priceRwf: 18_000_000, sizeSqm: 350, landUse: "residential", status: "published", remainingCount: 4 },
+  { slug: "muhanga-kiyumba-7m", title: "Ikibanza cy'ubuhinzi i Kiyumba", district: "Muhanga", sector: "Kiyumba", cell: "Kiyumba", village: "Rugendabari", priceRwf: 7_000_000, sizeSqm: 900, landUse: "farming", status: "published", remainingCount: 7 },
+  { slug: "muhanga-shyogwe-14m", title: "Ikibanza cyo guturamo i Shyogwe", district: "Muhanga", sector: "Shyogwe", cell: "Shyogwe", village: "Bwama", priceRwf: 14_000_000, sizeSqm: 300, landUse: "residential", status: "published", remainingCount: 3 },
+  { slug: "muhanga-cyeza-6m", title: "Ikibanza cy'ubuhinzi i Cyeza", district: "Muhanga", sector: "Cyeza", cell: "Cyeza", village: "Nyarusenge", priceRwf: 6_000_000, sizeSqm: 1100, landUse: "farming", status: "published", remainingCount: 9 },
+  { slug: "muhanga-town-25m", title: "Ikibanza kivanze mu mujyi wa Muhanga", district: "Muhanga", sector: "Muhanga", cell: "Muhanga", village: "Kabgayi II", priceRwf: 25_000_000, sizeSqm: 420, landUse: "mixed", status: "pending_review", remainingCount: 3 },
 ] as const;
 
 async function main() {
@@ -84,6 +84,8 @@ async function main() {
         title: plot.title,
         district: plot.district,
         sector: plot.sector,
+        cell: plot.cell,
+        village: plot.village,
         priceRwf: plot.priceRwf,
         sizeSqm: plot.sizeSqm,
         remainingCount: plot.remainingCount,

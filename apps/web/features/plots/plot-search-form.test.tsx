@@ -14,14 +14,15 @@ describe("PlotSearchForm", () => {
     push.mockReset();
   });
 
-  it("sends visible location, budget, and land-use values to search results", () => {
+  it("sends visible location, budget range, and zoning values to search results", () => {
     render(<PlotSearchForm />);
 
     fireEvent.change(screen.getByLabelText("Aho ushaka"), { target: { value: "Nyamata" } });
-    fireEvent.change(screen.getByLabelText("Budget yawe"), { target: { value: "13000000" } });
-    fireEvent.change(screen.getByLabelText("Icyiciro"), { target: { value: "Guturwamo" } });
+    fireEvent.change(screen.getByLabelText("Guhera kuri (RWF)"), { target: { value: "5000000" } });
+    fireEvent.change(screen.getByLabelText("Kugeza kuri (RWF)"), { target: { value: "13000000" } });
+    fireEvent.change(screen.getByLabelText("Zoning"), { target: { value: "Guturwamo" } });
     fireEvent.click(screen.getByRole("button", { name: "Shaka ibibanza" }));
 
-    expect(push).toHaveBeenCalledWith("/search?location=Nyamata&maxPrice=13000000&landUse=Guturwamo");
+    expect(push).toHaveBeenCalledWith("/search?location=Nyamata&minPrice=5000000&maxPrice=13000000&landUse=Guturwamo");
   });
 });

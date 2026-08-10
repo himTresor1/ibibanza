@@ -78,6 +78,8 @@ model Plot {
   title             String
   district          String
   sector            String
+  cell              String
+  village           String
   priceRwf          Int
   sizeSqm           Int
   landUse           LandUse

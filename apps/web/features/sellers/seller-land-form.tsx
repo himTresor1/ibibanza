@@ -9,6 +9,8 @@ interface SellerFormValues {
   sellerPhone: string;
   district: string;
   sector: string;
+  cell: string;
+  village: string;
   priceRwf: string;
   sizeSqm: string;
   landUse: string;
@@ -23,6 +25,8 @@ const initialValues: SellerFormValues = {
   sellerPhone: "",
   district: "",
   sector: "",
+  cell: "",
+  village: "",
   priceRwf: "",
   sizeSqm: "",
   landUse: "residential",
@@ -122,6 +126,8 @@ export function SellerLandForm() {
         sellerPhone: values.sellerPhone,
         district: values.district,
         sector: values.sector,
+        cell: values.cell,
+        village: values.village,
         priceRwf: Number(values.priceRwf),
         sizeSqm: Number(values.sizeSqm),
         landUse: values.landUse,
@@ -191,6 +197,12 @@ export function SellerLandForm() {
               <FormField id="sector" label="Umurenge">
                 <Input name="sector" placeholder="Nyamata" value={values.sector} onChange={update("sector")} required />
               </FormField>
+              <FormField id="cell" label="Akagari">
+                <Input name="cell" placeholder="Rilima" value={values.cell} onChange={update("cell")} required />
+              </FormField>
+              <FormField id="village" label="Umudugudu">
+                <Input name="village" placeholder="Kayenzi" value={values.village} onChange={update("village")} required />
+              </FormField>
             </div>
             <div className="grid gap-4 sm:grid-cols-3">
               <FormField id="priceRwf" label="Igiciro RWF">
@@ -199,7 +211,7 @@ export function SellerLandForm() {
               <FormField id="sizeSqm" label="Ingano sqm">
                 <Input name="sizeSqm" inputMode="numeric" value={values.sizeSqm} onChange={update("sizeSqm")} required />
               </FormField>
-              <FormField id="landUse" label="Icyiciro">
+              <FormField id="landUse" label="Zoning">
                 <Select name="landUse" value={values.landUse} onChange={update("landUse")}>
                   <option value="residential">Guturwamo</option>
                   <option value="commercial">Ubucuruzi</option>

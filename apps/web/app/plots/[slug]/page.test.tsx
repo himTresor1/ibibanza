@@ -14,6 +14,8 @@ vi.mock("../../../lib/plots-api", () => ({
     title: "Ikibanza i Nyamata hafi y'umuhanda",
     district: "Bugesera",
     sector: "Nyamata",
+    cell: "Rilima",
+    village: "Kayenzi",
     priceRwf: 12000000,
     sizeSqm: 300,
     landUse: "Guturwamo",

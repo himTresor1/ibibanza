@@ -40,7 +40,7 @@ export function AlertOptInForm() {
           <FormField id="urgency" label="Igihe ushaka kuguriramo"><Select name="urgency"><option value="now">Ubu</option><option value="this_month">Muri uku kwezi</option><option value="later">Nyuma</option></Select></FormField>
         </div>
         <div className="grid gap-4 sm:grid-cols-2">
-          <FormField id="landUse" label="Icyiciro"><Select name="landUse"><option value="residential">Guturwamo</option><option value="commercial">Ubucuruzi</option><option value="farming">Ubuhinzi</option></Select></FormField>
+          <FormField id="landUse" label="Zoning"><Select name="landUse"><option value="residential">Guturwamo</option><option value="commercial">Ubucuruzi</option><option value="farming">Ubuhinzi</option></Select></FormField>
           <FormField id="buyerType" label="Uri hehe"><Select name="buyerType"><option value="local">Mu Rwanda</option><option value="diaspora">Diaspora</option></Select></FormField>
         </div>
         <label className="flex items-center gap-3 text-sm"><Checkbox name="consentWhatsapp" required /> Nemeye kwakira ubutumwa kuri WhatsApp.</label>

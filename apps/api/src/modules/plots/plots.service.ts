@@ -19,10 +19,23 @@ export class PlotsService {
       where: {
         status: { in: [PlotStatus.published, PlotStatus.reserved] },
         ...(query.location
-          ? { OR: [{ district: { contains: query.location, mode: "insensitive" } }, { sector: { contains: query.location, mode: "insensitive" } }] }
+          ? {
+              OR: [
+                { district: { contains: query.location, mode: "insensitive" } },
+                { sector: { contains: query.location, mode: "insensitive" } },
+                { cell: { contains: query.location, mode: "insensitive" } },
+                { village: { contains: query.location, mode: "insensitive" } },
+              ],
+            }
           : {}),
-        ...(query.minPrice ? { priceRwf: { gte: query.minPrice } } : {}),
-        ...(query.maxPrice ? { priceRwf: { lte: query.maxPrice } } : {}),
+        ...(query.minPrice || query.maxPrice
+          ? {
+              priceRwf: {
+                ...(query.minPrice ? { gte: query.minPrice } : {}),
+                ...(query.maxPrice ? { lte: query.maxPrice } : {}),
+              },
+            }
+          : {}),
         ...(query.landUse ? { landUse: query.landUse as never } : {}),
       },
       include: includePublic,
@@ -50,6 +63,8 @@ export class PlotsService {
         title: input.title,
         district: input.district,
         sector: input.sector,
+        cell: input.cell,
+        village: input.village,
         priceRwf: input.priceRwf,
         sizeSqm: input.sizeSqm,
         landUse: input.landUse,

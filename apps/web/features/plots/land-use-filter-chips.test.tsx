@@ -16,7 +16,7 @@ describe("LandUseFilterChips", () => {
   it("links the all-categories chip back to an unfiltered search", () => {
     render(<LandUseFilterChips search={{ location: "Nyamata", landUse: "Ubucuruzi" }} />);
 
-    expect(screen.getByRole("link", { name: "Ibyiciro byose" }))
+    expect(screen.getByRole("link", { name: "Byose" }))
       .toHaveAttribute("href", "/search?location=Nyamata");
   });
 });
