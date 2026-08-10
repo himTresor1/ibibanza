@@ -65,3 +65,11 @@ export async function adminPatchJson<T>(path: string, body: unknown): Promise<T>
   }
   return response.json() as Promise<T>;
 }
+
+export async function adminPostJson<T>(path: string, body: unknown): Promise<T> {
+  const response = await adminFetch(path, { method: "POST", body: JSON.stringify(body) });
+  if (!response.ok) {
+    throw new Error(`Admin request failed: ${response.status}`);
+  }
+  return response.json() as Promise<T>;
+}
